@@ -13,6 +13,9 @@ import { Route as RegisterRouteImport } from './routes/register'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as OnboardingStudentRouteImport } from './routes/onboarding.student'
+import { Route as OnboardingGraduateRouteImport } from './routes/onboarding.graduate'
+import { Route as OnboardingBusinessRouteImport } from './routes/onboarding.business'
 
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
@@ -34,18 +37,39 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OnboardingStudentRoute = OnboardingStudentRouteImport.update({
+  id: '/onboarding/student',
+  path: '/onboarding/student',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingGraduateRoute = OnboardingGraduateRouteImport.update({
+  id: '/onboarding/graduate',
+  path: '/onboarding/graduate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingBusinessRoute = OnboardingBusinessRouteImport.update({
+  id: '/onboarding/business',
+  path: '/onboarding/business',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/onboarding/business': typeof OnboardingBusinessRoute
+  '/onboarding/graduate': typeof OnboardingGraduateRoute
+  '/onboarding/student': typeof OnboardingStudentRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/onboarding/business': typeof OnboardingBusinessRoute
+  '/onboarding/graduate': typeof OnboardingGraduateRoute
+  '/onboarding/student': typeof OnboardingStudentRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +77,38 @@ export interface FileRoutesById {
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/onboarding/business': typeof OnboardingBusinessRoute
+  '/onboarding/graduate': typeof OnboardingGraduateRoute
+  '/onboarding/student': typeof OnboardingStudentRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/forgot-password' | '/login' | '/register'
+  fullPaths:
+    | '/'
+    | '/forgot-password'
+    | '/login'
+    | '/register'
+    | '/onboarding/business'
+    | '/onboarding/graduate'
+    | '/onboarding/student'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/forgot-password' | '/login' | '/register'
-  id: '__root__' | '/' | '/forgot-password' | '/login' | '/register'
+  to:
+    | '/'
+    | '/forgot-password'
+    | '/login'
+    | '/register'
+    | '/onboarding/business'
+    | '/onboarding/graduate'
+    | '/onboarding/student'
+  id:
+    | '__root__'
+    | '/'
+    | '/forgot-password'
+    | '/login'
+    | '/register'
+    | '/onboarding/business'
+    | '/onboarding/graduate'
+    | '/onboarding/student'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +116,9 @@ export interface RootRouteChildren {
   ForgotPasswordRoute: typeof ForgotPasswordRoute
   LoginRoute: typeof LoginRoute
   RegisterRoute: typeof RegisterRoute
+  OnboardingBusinessRoute: typeof OnboardingBusinessRoute
+  OnboardingGraduateRoute: typeof OnboardingGraduateRoute
+  OnboardingStudentRoute: typeof OnboardingStudentRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +151,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/onboarding/student': {
+      id: '/onboarding/student'
+      path: '/onboarding/student'
+      fullPath: '/onboarding/student'
+      preLoaderRoute: typeof OnboardingStudentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding/graduate': {
+      id: '/onboarding/graduate'
+      path: '/onboarding/graduate'
+      fullPath: '/onboarding/graduate'
+      preLoaderRoute: typeof OnboardingGraduateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding/business': {
+      id: '/onboarding/business'
+      path: '/onboarding/business'
+      fullPath: '/onboarding/business'
+      preLoaderRoute: typeof OnboardingBusinessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +180,9 @@ const rootRouteChildren: RootRouteChildren = {
   ForgotPasswordRoute: ForgotPasswordRoute,
   LoginRoute: LoginRoute,
   RegisterRoute: RegisterRoute,
+  OnboardingBusinessRoute: OnboardingBusinessRoute,
+  OnboardingGraduateRoute: OnboardingGraduateRoute,
+  OnboardingStudentRoute: OnboardingStudentRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

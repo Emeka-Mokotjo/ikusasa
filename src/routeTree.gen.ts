@@ -9,38 +9,180 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as StudentDashboardRouteImport } from './routes/student.dashboard'
+import { Route as OnboardingStudentRouteImport } from './routes/onboarding.student'
+import { Route as OnboardingGraduateRouteImport } from './routes/onboarding.graduate'
+import { Route as OnboardingBusinessRouteImport } from './routes/onboarding.business'
+import { Route as GraduateDashboardRouteImport } from './routes/graduate.dashboard'
+import { Route as BusinessDashboardRouteImport } from './routes/business.dashboard'
 
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
+  id: '/forgot-password',
+  path: '/forgot-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StudentDashboardRoute = StudentDashboardRouteImport.update({
+  id: '/student/dashboard',
+  path: '/student/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingStudentRoute = OnboardingStudentRouteImport.update({
+  id: '/onboarding/student',
+  path: '/onboarding/student',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingGraduateRoute = OnboardingGraduateRouteImport.update({
+  id: '/onboarding/graduate',
+  path: '/onboarding/graduate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingBusinessRoute = OnboardingBusinessRouteImport.update({
+  id: '/onboarding/business',
+  path: '/onboarding/business',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GraduateDashboardRoute = GraduateDashboardRouteImport.update({
+  id: '/graduate/dashboard',
+  path: '/graduate/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BusinessDashboardRoute = BusinessDashboardRouteImport.update({
+  id: '/business/dashboard',
+  path: '/business/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/business/dashboard': typeof BusinessDashboardRoute
+  '/graduate/dashboard': typeof GraduateDashboardRoute
+  '/onboarding/business': typeof OnboardingBusinessRoute
+  '/onboarding/graduate': typeof OnboardingGraduateRoute
+  '/onboarding/student': typeof OnboardingStudentRoute
+  '/student/dashboard': typeof StudentDashboardRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/business/dashboard': typeof BusinessDashboardRoute
+  '/graduate/dashboard': typeof GraduateDashboardRoute
+  '/onboarding/business': typeof OnboardingBusinessRoute
+  '/onboarding/graduate': typeof OnboardingGraduateRoute
+  '/onboarding/student': typeof OnboardingStudentRoute
+  '/student/dashboard': typeof StudentDashboardRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/business/dashboard': typeof BusinessDashboardRoute
+  '/graduate/dashboard': typeof GraduateDashboardRoute
+  '/onboarding/business': typeof OnboardingBusinessRoute
+  '/onboarding/graduate': typeof OnboardingGraduateRoute
+  '/onboarding/student': typeof OnboardingStudentRoute
+  '/student/dashboard': typeof StudentDashboardRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/forgot-password'
+    | '/login'
+    | '/register'
+    | '/business/dashboard'
+    | '/graduate/dashboard'
+    | '/onboarding/business'
+    | '/onboarding/graduate'
+    | '/onboarding/student'
+    | '/student/dashboard'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/forgot-password'
+    | '/login'
+    | '/register'
+    | '/business/dashboard'
+    | '/graduate/dashboard'
+    | '/onboarding/business'
+    | '/onboarding/graduate'
+    | '/onboarding/student'
+    | '/student/dashboard'
+  id:
+    | '__root__'
+    | '/'
+    | '/forgot-password'
+    | '/login'
+    | '/register'
+    | '/business/dashboard'
+    | '/graduate/dashboard'
+    | '/onboarding/business'
+    | '/onboarding/graduate'
+    | '/onboarding/student'
+    | '/student/dashboard'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ForgotPasswordRoute: typeof ForgotPasswordRoute
+  LoginRoute: typeof LoginRoute
+  RegisterRoute: typeof RegisterRoute
+  BusinessDashboardRoute: typeof BusinessDashboardRoute
+  GraduateDashboardRoute: typeof GraduateDashboardRoute
+  OnboardingBusinessRoute: typeof OnboardingBusinessRoute
+  OnboardingGraduateRoute: typeof OnboardingGraduateRoute
+  OnboardingStudentRoute: typeof OnboardingStudentRoute
+  StudentDashboardRoute: typeof StudentDashboardRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forgot-password': {
+      id: '/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof ForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +190,63 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/student/dashboard': {
+      id: '/student/dashboard'
+      path: '/student/dashboard'
+      fullPath: '/student/dashboard'
+      preLoaderRoute: typeof StudentDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding/student': {
+      id: '/onboarding/student'
+      path: '/onboarding/student'
+      fullPath: '/onboarding/student'
+      preLoaderRoute: typeof OnboardingStudentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding/graduate': {
+      id: '/onboarding/graduate'
+      path: '/onboarding/graduate'
+      fullPath: '/onboarding/graduate'
+      preLoaderRoute: typeof OnboardingGraduateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding/business': {
+      id: '/onboarding/business'
+      path: '/onboarding/business'
+      fullPath: '/onboarding/business'
+      preLoaderRoute: typeof OnboardingBusinessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/graduate/dashboard': {
+      id: '/graduate/dashboard'
+      path: '/graduate/dashboard'
+      fullPath: '/graduate/dashboard'
+      preLoaderRoute: typeof GraduateDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/business/dashboard': {
+      id: '/business/dashboard'
+      path: '/business/dashboard'
+      fullPath: '/business/dashboard'
+      preLoaderRoute: typeof BusinessDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ForgotPasswordRoute: ForgotPasswordRoute,
+  LoginRoute: LoginRoute,
+  RegisterRoute: RegisterRoute,
+  BusinessDashboardRoute: BusinessDashboardRoute,
+  GraduateDashboardRoute: GraduateDashboardRoute,
+  OnboardingBusinessRoute: OnboardingBusinessRoute,
+  OnboardingGraduateRoute: OnboardingGraduateRoute,
+  OnboardingStudentRoute: OnboardingStudentRoute,
+  StudentDashboardRoute: StudentDashboardRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

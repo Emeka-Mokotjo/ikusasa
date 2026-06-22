@@ -13,12 +13,18 @@ import { Route as RegisterRouteImport } from './routes/register'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as OpportunitiesIndexRouteImport } from './routes/opportunities.index'
 import { Route as StudentDashboardRouteImport } from './routes/student.dashboard'
+import { Route as StudentApplicationsRouteImport } from './routes/student.applications'
+import { Route as OpportunitiesOpportunityIdRouteImport } from './routes/opportunities.$opportunityId'
 import { Route as OnboardingStudentRouteImport } from './routes/onboarding.student'
 import { Route as OnboardingGraduateRouteImport } from './routes/onboarding.graduate'
 import { Route as OnboardingBusinessRouteImport } from './routes/onboarding.business'
 import { Route as GraduateDashboardRouteImport } from './routes/graduate.dashboard'
+import { Route as GraduateApplicationsRouteImport } from './routes/graduate.applications'
 import { Route as BusinessDashboardRouteImport } from './routes/business.dashboard'
+import { Route as BusinessOpportunitiesIndexRouteImport } from './routes/business.opportunities.index'
+import { Route as BusinessOpportunitiesNewRouteImport } from './routes/business.opportunities.new'
 
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
@@ -40,11 +46,27 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OpportunitiesIndexRoute = OpportunitiesIndexRouteImport.update({
+  id: '/opportunities/',
+  path: '/opportunities/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StudentDashboardRoute = StudentDashboardRouteImport.update({
   id: '/student/dashboard',
   path: '/student/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StudentApplicationsRoute = StudentApplicationsRouteImport.update({
+  id: '/student/applications',
+  path: '/student/applications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OpportunitiesOpportunityIdRoute =
+  OpportunitiesOpportunityIdRouteImport.update({
+    id: '/opportunities/$opportunityId',
+    path: '/opportunities/$opportunityId',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const OnboardingStudentRoute = OnboardingStudentRouteImport.update({
   id: '/onboarding/student',
   path: '/onboarding/student',
@@ -65,11 +87,28 @@ const GraduateDashboardRoute = GraduateDashboardRouteImport.update({
   path: '/graduate/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GraduateApplicationsRoute = GraduateApplicationsRouteImport.update({
+  id: '/graduate/applications',
+  path: '/graduate/applications',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BusinessDashboardRoute = BusinessDashboardRouteImport.update({
   id: '/business/dashboard',
   path: '/business/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BusinessOpportunitiesIndexRoute =
+  BusinessOpportunitiesIndexRouteImport.update({
+    id: '/business/opportunities/',
+    path: '/business/opportunities/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const BusinessOpportunitiesNewRoute =
+  BusinessOpportunitiesNewRouteImport.update({
+    id: '/business/opportunities/new',
+    path: '/business/opportunities/new',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -77,11 +116,17 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/business/dashboard': typeof BusinessDashboardRoute
+  '/graduate/applications': typeof GraduateApplicationsRoute
   '/graduate/dashboard': typeof GraduateDashboardRoute
   '/onboarding/business': typeof OnboardingBusinessRoute
   '/onboarding/graduate': typeof OnboardingGraduateRoute
   '/onboarding/student': typeof OnboardingStudentRoute
+  '/opportunities/$opportunityId': typeof OpportunitiesOpportunityIdRoute
+  '/student/applications': typeof StudentApplicationsRoute
   '/student/dashboard': typeof StudentDashboardRoute
+  '/opportunities/': typeof OpportunitiesIndexRoute
+  '/business/opportunities/new': typeof BusinessOpportunitiesNewRoute
+  '/business/opportunities/': typeof BusinessOpportunitiesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -89,11 +134,17 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/business/dashboard': typeof BusinessDashboardRoute
+  '/graduate/applications': typeof GraduateApplicationsRoute
   '/graduate/dashboard': typeof GraduateDashboardRoute
   '/onboarding/business': typeof OnboardingBusinessRoute
   '/onboarding/graduate': typeof OnboardingGraduateRoute
   '/onboarding/student': typeof OnboardingStudentRoute
+  '/opportunities/$opportunityId': typeof OpportunitiesOpportunityIdRoute
+  '/student/applications': typeof StudentApplicationsRoute
   '/student/dashboard': typeof StudentDashboardRoute
+  '/opportunities': typeof OpportunitiesIndexRoute
+  '/business/opportunities/new': typeof BusinessOpportunitiesNewRoute
+  '/business/opportunities': typeof BusinessOpportunitiesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -102,11 +153,17 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/business/dashboard': typeof BusinessDashboardRoute
+  '/graduate/applications': typeof GraduateApplicationsRoute
   '/graduate/dashboard': typeof GraduateDashboardRoute
   '/onboarding/business': typeof OnboardingBusinessRoute
   '/onboarding/graduate': typeof OnboardingGraduateRoute
   '/onboarding/student': typeof OnboardingStudentRoute
+  '/opportunities/$opportunityId': typeof OpportunitiesOpportunityIdRoute
+  '/student/applications': typeof StudentApplicationsRoute
   '/student/dashboard': typeof StudentDashboardRoute
+  '/opportunities/': typeof OpportunitiesIndexRoute
+  '/business/opportunities/new': typeof BusinessOpportunitiesNewRoute
+  '/business/opportunities/': typeof BusinessOpportunitiesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -116,11 +173,17 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/business/dashboard'
+    | '/graduate/applications'
     | '/graduate/dashboard'
     | '/onboarding/business'
     | '/onboarding/graduate'
     | '/onboarding/student'
+    | '/opportunities/$opportunityId'
+    | '/student/applications'
     | '/student/dashboard'
+    | '/opportunities/'
+    | '/business/opportunities/new'
+    | '/business/opportunities/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -128,11 +191,17 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/business/dashboard'
+    | '/graduate/applications'
     | '/graduate/dashboard'
     | '/onboarding/business'
     | '/onboarding/graduate'
     | '/onboarding/student'
+    | '/opportunities/$opportunityId'
+    | '/student/applications'
     | '/student/dashboard'
+    | '/opportunities'
+    | '/business/opportunities/new'
+    | '/business/opportunities'
   id:
     | '__root__'
     | '/'
@@ -140,11 +209,17 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/business/dashboard'
+    | '/graduate/applications'
     | '/graduate/dashboard'
     | '/onboarding/business'
     | '/onboarding/graduate'
     | '/onboarding/student'
+    | '/opportunities/$opportunityId'
+    | '/student/applications'
     | '/student/dashboard'
+    | '/opportunities/'
+    | '/business/opportunities/new'
+    | '/business/opportunities/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -153,11 +228,17 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   RegisterRoute: typeof RegisterRoute
   BusinessDashboardRoute: typeof BusinessDashboardRoute
+  GraduateApplicationsRoute: typeof GraduateApplicationsRoute
   GraduateDashboardRoute: typeof GraduateDashboardRoute
   OnboardingBusinessRoute: typeof OnboardingBusinessRoute
   OnboardingGraduateRoute: typeof OnboardingGraduateRoute
   OnboardingStudentRoute: typeof OnboardingStudentRoute
+  OpportunitiesOpportunityIdRoute: typeof OpportunitiesOpportunityIdRoute
+  StudentApplicationsRoute: typeof StudentApplicationsRoute
   StudentDashboardRoute: typeof StudentDashboardRoute
+  OpportunitiesIndexRoute: typeof OpportunitiesIndexRoute
+  BusinessOpportunitiesNewRoute: typeof BusinessOpportunitiesNewRoute
+  BusinessOpportunitiesIndexRoute: typeof BusinessOpportunitiesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -190,11 +271,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/opportunities/': {
+      id: '/opportunities/'
+      path: '/opportunities'
+      fullPath: '/opportunities/'
+      preLoaderRoute: typeof OpportunitiesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/student/dashboard': {
       id: '/student/dashboard'
       path: '/student/dashboard'
       fullPath: '/student/dashboard'
       preLoaderRoute: typeof StudentDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/student/applications': {
+      id: '/student/applications'
+      path: '/student/applications'
+      fullPath: '/student/applications'
+      preLoaderRoute: typeof StudentApplicationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/opportunities/$opportunityId': {
+      id: '/opportunities/$opportunityId'
+      path: '/opportunities/$opportunityId'
+      fullPath: '/opportunities/$opportunityId'
+      preLoaderRoute: typeof OpportunitiesOpportunityIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/onboarding/student': {
@@ -225,11 +327,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GraduateDashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/graduate/applications': {
+      id: '/graduate/applications'
+      path: '/graduate/applications'
+      fullPath: '/graduate/applications'
+      preLoaderRoute: typeof GraduateApplicationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/business/dashboard': {
       id: '/business/dashboard'
       path: '/business/dashboard'
       fullPath: '/business/dashboard'
       preLoaderRoute: typeof BusinessDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/business/opportunities/': {
+      id: '/business/opportunities/'
+      path: '/business/opportunities'
+      fullPath: '/business/opportunities/'
+      preLoaderRoute: typeof BusinessOpportunitiesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/business/opportunities/new': {
+      id: '/business/opportunities/new'
+      path: '/business/opportunities/new'
+      fullPath: '/business/opportunities/new'
+      preLoaderRoute: typeof BusinessOpportunitiesNewRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -241,11 +364,17 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   RegisterRoute: RegisterRoute,
   BusinessDashboardRoute: BusinessDashboardRoute,
+  GraduateApplicationsRoute: GraduateApplicationsRoute,
   GraduateDashboardRoute: GraduateDashboardRoute,
   OnboardingBusinessRoute: OnboardingBusinessRoute,
   OnboardingGraduateRoute: OnboardingGraduateRoute,
   OnboardingStudentRoute: OnboardingStudentRoute,
+  OpportunitiesOpportunityIdRoute: OpportunitiesOpportunityIdRoute,
+  StudentApplicationsRoute: StudentApplicationsRoute,
   StudentDashboardRoute: StudentDashboardRoute,
+  OpportunitiesIndexRoute: OpportunitiesIndexRoute,
+  BusinessOpportunitiesNewRoute: BusinessOpportunitiesNewRoute,
+  BusinessOpportunitiesIndexRoute: BusinessOpportunitiesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

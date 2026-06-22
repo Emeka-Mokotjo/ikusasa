@@ -47,9 +47,7 @@ function DashboardPlaceholder({ role }: { role: "Student" | "Graduate" | "Busine
   );
 }
 
-export const StudentDashboardRoute = createFileRoute("/student/dashboard")({
+export const Route = createFileRoute("/student/dashboard")({
   head: () => ({ meta: [{ title: "Student dashboard — Ikusasa" }] }),
   component: () => <DashboardPlaceholder role="Student" />,
 });
-
-export const Route = StudentDashboardRoute;

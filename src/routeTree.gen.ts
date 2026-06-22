@@ -13,9 +13,12 @@ import { Route as RegisterRouteImport } from './routes/register'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as StudentDashboardRouteImport } from './routes/student.dashboard'
 import { Route as OnboardingStudentRouteImport } from './routes/onboarding.student'
 import { Route as OnboardingGraduateRouteImport } from './routes/onboarding.graduate'
 import { Route as OnboardingBusinessRouteImport } from './routes/onboarding.business'
+import { Route as GraduateDashboardRouteImport } from './routes/graduate.dashboard'
+import { Route as BusinessDashboardRouteImport } from './routes/business.dashboard'
 
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
@@ -37,6 +40,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StudentDashboardRoute = StudentDashboardRouteImport.update({
+  id: '/student/dashboard',
+  path: '/student/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OnboardingStudentRoute = OnboardingStudentRouteImport.update({
   id: '/onboarding/student',
   path: '/onboarding/student',
@@ -52,24 +60,40 @@ const OnboardingBusinessRoute = OnboardingBusinessRouteImport.update({
   path: '/onboarding/business',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GraduateDashboardRoute = GraduateDashboardRouteImport.update({
+  id: '/graduate/dashboard',
+  path: '/graduate/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BusinessDashboardRoute = BusinessDashboardRouteImport.update({
+  id: '/business/dashboard',
+  path: '/business/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/business/dashboard': typeof BusinessDashboardRoute
+  '/graduate/dashboard': typeof GraduateDashboardRoute
   '/onboarding/business': typeof OnboardingBusinessRoute
   '/onboarding/graduate': typeof OnboardingGraduateRoute
   '/onboarding/student': typeof OnboardingStudentRoute
+  '/student/dashboard': typeof StudentDashboardRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/business/dashboard': typeof BusinessDashboardRoute
+  '/graduate/dashboard': typeof GraduateDashboardRoute
   '/onboarding/business': typeof OnboardingBusinessRoute
   '/onboarding/graduate': typeof OnboardingGraduateRoute
   '/onboarding/student': typeof OnboardingStudentRoute
+  '/student/dashboard': typeof StudentDashboardRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -77,9 +101,12 @@ export interface FileRoutesById {
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/business/dashboard': typeof BusinessDashboardRoute
+  '/graduate/dashboard': typeof GraduateDashboardRoute
   '/onboarding/business': typeof OnboardingBusinessRoute
   '/onboarding/graduate': typeof OnboardingGraduateRoute
   '/onboarding/student': typeof OnboardingStudentRoute
+  '/student/dashboard': typeof StudentDashboardRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -88,27 +115,36 @@ export interface FileRouteTypes {
     | '/forgot-password'
     | '/login'
     | '/register'
+    | '/business/dashboard'
+    | '/graduate/dashboard'
     | '/onboarding/business'
     | '/onboarding/graduate'
     | '/onboarding/student'
+    | '/student/dashboard'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/forgot-password'
     | '/login'
     | '/register'
+    | '/business/dashboard'
+    | '/graduate/dashboard'
     | '/onboarding/business'
     | '/onboarding/graduate'
     | '/onboarding/student'
+    | '/student/dashboard'
   id:
     | '__root__'
     | '/'
     | '/forgot-password'
     | '/login'
     | '/register'
+    | '/business/dashboard'
+    | '/graduate/dashboard'
     | '/onboarding/business'
     | '/onboarding/graduate'
     | '/onboarding/student'
+    | '/student/dashboard'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -116,9 +152,12 @@ export interface RootRouteChildren {
   ForgotPasswordRoute: typeof ForgotPasswordRoute
   LoginRoute: typeof LoginRoute
   RegisterRoute: typeof RegisterRoute
+  BusinessDashboardRoute: typeof BusinessDashboardRoute
+  GraduateDashboardRoute: typeof GraduateDashboardRoute
   OnboardingBusinessRoute: typeof OnboardingBusinessRoute
   OnboardingGraduateRoute: typeof OnboardingGraduateRoute
   OnboardingStudentRoute: typeof OnboardingStudentRoute
+  StudentDashboardRoute: typeof StudentDashboardRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -151,6 +190,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/student/dashboard': {
+      id: '/student/dashboard'
+      path: '/student/dashboard'
+      fullPath: '/student/dashboard'
+      preLoaderRoute: typeof StudentDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/onboarding/student': {
       id: '/onboarding/student'
       path: '/onboarding/student'
@@ -172,6 +218,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OnboardingBusinessRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/graduate/dashboard': {
+      id: '/graduate/dashboard'
+      path: '/graduate/dashboard'
+      fullPath: '/graduate/dashboard'
+      preLoaderRoute: typeof GraduateDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/business/dashboard': {
+      id: '/business/dashboard'
+      path: '/business/dashboard'
+      fullPath: '/business/dashboard'
+      preLoaderRoute: typeof BusinessDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -180,9 +240,12 @@ const rootRouteChildren: RootRouteChildren = {
   ForgotPasswordRoute: ForgotPasswordRoute,
   LoginRoute: LoginRoute,
   RegisterRoute: RegisterRoute,
+  BusinessDashboardRoute: BusinessDashboardRoute,
+  GraduateDashboardRoute: GraduateDashboardRoute,
   OnboardingBusinessRoute: OnboardingBusinessRoute,
   OnboardingGraduateRoute: OnboardingGraduateRoute,
   OnboardingStudentRoute: OnboardingStudentRoute,
+  StudentDashboardRoute: StudentDashboardRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

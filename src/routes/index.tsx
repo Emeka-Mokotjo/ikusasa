@@ -1,29 +1,140 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link, redirect } from "@tanstack/react-router";
+import { useAuthStore } from "@/store";
+import { Logo } from "@/components/common/Logo";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Briefcase, GraduationCap, Sparkles } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "Ikusasa — Where emerging talent gets to work" },
+      {
+        name: "description",
+        content:
+          "The South African marketplace connecting students and graduates with businesses for freelance, internship, and entry-level opportunities.",
+      },
+      { property: "og:title", content: "Ikusasa — Where emerging talent gets to work" },
+      {
+        property: "og:description",
+        content:
+          "The South African marketplace connecting students and graduates with businesses for freelance, internship, and entry-level opportunities.",
+      },
     ],
   }),
-  component: Index,
+  beforeLoad: () => {
+    if (typeof window !== "undefined") {
+      const raw = localStorage.getItem("ikusasa-auth");
+      if (raw) {
+        try {
+          const parsed = JSON.parse(raw) as { state?: { user?: { onboardingComplete?: boolean } } };
+          if (parsed.state?.user && parsed.state.user.onboardingComplete === false) {
+            throw redirect({ to: "/register" });
+          }
+        } catch (e) {
+          if (e && typeof e === "object" && "to" in e) throw e;
+        }
+      }
+    }
+  },
+  component: Landing,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+function Landing() {
+  const user = useAuthStore((s) => s.user);
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-canvas">
+      <header className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+        <Logo />
+        <nav className="flex items-center gap-2">
+          {user ? (
+            <Button asChild>
+              <Link to="/login">Continue as {user.fullName.split(" ")[0]}</Link>
+            </Button>
+          ) : (
+            <>
+              <Button asChild variant="ghost">
+                <Link to="/login">Log in</Link>
+              </Button>
+              <Button asChild>
+                <Link to="/register">
+                  Get started <ArrowRight className="ml-1.5 h-4 w-4" />
+                </Link>
+              </Button>
+            </>
+          )}
+        </nav>
+      </header>
+
+      <main className="mx-auto max-w-6xl px-6 pb-24 pt-12 sm:pt-20">
+        <section className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground">
+              <Sparkles className="h-3.5 w-3.5 text-primary" /> Now in beta across South Africa
+            </span>
+            <h1 className="mt-6 font-display text-4xl font-semibold tracking-tight text-foreground sm:text-6xl">
+              Where emerging talent
+              <span className="block text-primary">gets to work.</span>
+            </h1>
+            <p className="mt-5 max-w-xl text-base text-muted-foreground sm:text-lg">
+              Ikusasa is the marketplace where South African students and graduates land freelance
+              gigs, internships, and entry-level work — and where businesses find the next wave of
+              talent.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button asChild size="lg">
+                <Link to="/register">
+                  Create your profile <ArrowRight className="ml-1.5 h-4 w-4" />
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline">
+                <Link to="/login">I already have an account</Link>
+              </Button>
+            </div>
+          </div>
+
+          <div className="relative grid gap-4">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -right-10 -top-10 h-72 w-72 rounded-full bg-primary/15 blur-3xl"
+            />
+            <div className="relative rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-elegant)]">
+              <div className="flex items-center gap-3">
+                <span className="grid h-10 w-10 place-items-center rounded-xl bg-accent text-accent-foreground">
+                  <GraduationCap className="h-5 w-5" />
+                </span>
+                <div>
+                  <p className="text-sm font-semibold">For students & graduates</p>
+                  <p className="text-xs text-muted-foreground">
+                    Real work. Real reviews. Real income.
+                  </p>
+                </div>
+              </div>
+              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                <li>• Apply to vetted opportunities in minutes</li>
+                <li>• Build a portfolio of completed projects</li>
+                <li>• Earn in ZAR, paid on milestones</li>
+              </ul>
+            </div>
+            <div className="relative rounded-3xl border border-border bg-foreground p-6 text-background shadow-[var(--shadow-elegant)]">
+              <div className="flex items-center gap-3">
+                <span className="grid h-10 w-10 place-items-center rounded-xl bg-primary text-primary-foreground">
+                  <Briefcase className="h-5 w-5" />
+                </span>
+                <div>
+                  <p className="text-sm font-semibold">For businesses</p>
+                  <p className="text-xs text-background/60">Hire emerging talent without the gatekeeping.</p>
+                </div>
+              </div>
+              <ul className="mt-4 space-y-2 text-sm text-background/70">
+                <li>• Post a role in under 3 minutes</li>
+                <li>• Shortlist with rich profiles and portfolios</li>
+                <li>• Verified payments and review system</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
   );
 }

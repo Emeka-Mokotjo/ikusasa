@@ -5,3 +5,6 @@ export { studentService, graduateService } from "./student.service";
 export { businessService } from "./business.service";
 export { reviewService } from "./review.service";
 export { notificationService } from "./notification.service";
+export { messageService } from "./message.service";
+export { walletService } from "./wallet.service";
+export { adminService } from "./admin.service";

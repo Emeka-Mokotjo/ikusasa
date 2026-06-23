@@ -143,3 +143,59 @@ export interface AppNotification {
   createdAt: string;
   read: boolean;
 }
+
+export interface Message {
+  id: string;
+  conversationId: string;
+  senderId: string;
+  senderName: string;
+  body: string;
+  createdAt: string;
+  read: boolean;
+}
+
+export interface Conversation {
+  id: string;
+  participantIds: string[];
+  participantNames: string[];
+  participantRoles: UserRole[];
+  opportunityTitle?: string;
+  lastMessage: string;
+  lastMessageAt: string;
+  unreadCount: number;
+}
+
+export type WalletTxnType = "earning" | "withdrawal" | "payout" | "fee" | "charge";
+export type WalletTxnStatus = "pending" | "completed" | "failed";
+
+export interface WalletTransaction {
+  id: string;
+  userId: string;
+  type: WalletTxnType;
+  status: WalletTxnStatus;
+  amount: number;
+  description: string;
+  counterpartyName?: string;
+  opportunityTitle?: string;
+  createdAt: string;
+}
+
+export interface WalletSummary {
+  available: number;
+  pending: number;
+  lifetimeEarnings: number;
+  lastPayoutAt?: string;
+}
+
+export interface AdminStats {
+  totalUsers: number;
+  totalStudents: number;
+  totalGraduates: number;
+  totalBusinesses: number;
+  totalOpportunities: number;
+  openOpportunities: number;
+  totalApplications: number;
+  pendingVerifications: number;
+  flaggedItems: number;
+  signupsLast7Days: number[];
+}

@@ -9,12 +9,15 @@ import {
   FileText,
   LayoutDashboard,
   LogOut,
+  MessageSquare,
   Menu,
   PlusCircle,
   Settings,
+  ShieldCheck,
   Sparkles,
   Star,
   User as UserIcon,
+  Wallet,
 } from "lucide-react";
 import { Logo } from "@/components/common/Logo";
 import { Button } from "@/components/ui/button";
@@ -41,12 +44,23 @@ type NavItem = {
 };
 
 function navForRole(role: string | undefined): NavItem[] {
+  if (role === "admin") {
+    return [
+      { to: "/admin/dashboard", label: "Overview", icon: LayoutDashboard },
+      { to: "/opportunities", label: "Marketplace", icon: Compass },
+      { to: "/messages", label: "Messages", icon: MessageSquare },
+      { to: "/notifications", label: "Notifications", icon: Bell },
+    ];
+  }
   if (role === "business") {
     return [
       { to: "/business/dashboard", label: "Overview", icon: LayoutDashboard },
       { to: "/business/opportunities", label: "Opportunities", icon: Briefcase },
       { to: "/business/opportunities/new", label: "Post a role", icon: PlusCircle },
       { to: "/opportunities", label: "Browse marketplace", icon: Compass },
+      { to: "/messages", label: "Messages", icon: MessageSquare },
+      { to: "/wallet", label: "Billing & payouts", icon: Wallet },
+      { to: "/notifications", label: "Notifications", icon: Bell },
     ];
   }
   const base = role === "graduate" ? "/graduate" : "/student";
@@ -54,6 +68,9 @@ function navForRole(role: string | undefined): NavItem[] {
     { to: `${base}/dashboard`, label: "Overview", icon: LayoutDashboard },
     { to: "/opportunities", label: "Find work", icon: Compass },
     { to: `${base}/applications`, label: "Applications", icon: FileText },
+    { to: "/messages", label: "Messages", icon: MessageSquare },
+    { to: "/wallet", label: "Wallet", icon: Wallet },
+    { to: "/notifications", label: "Notifications", icon: Bell },
   ];
 }
 
@@ -173,9 +190,16 @@ export function AppShell({
                 <Logo />
               </div>
               <div className="ml-auto flex items-center gap-2">
-                <Button variant="ghost" size="icon" aria-label="Notifications" className="relative">
-                  <Bell className="h-5 w-5" />
-                  <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-primary" />
+                <Button asChild variant="ghost" size="icon" aria-label="Notifications" className="relative">
+                  <Link to="/notifications">
+                    <Bell className="h-5 w-5" />
+                    <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-primary" />
+                  </Link>
+                </Button>
+                <Button asChild variant="ghost" size="icon" aria-label="Messages" className="hidden sm:inline-flex">
+                  <Link to="/messages">
+                    <MessageSquare className="h-5 w-5" />
+                  </Link>
                 </Button>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
@@ -207,6 +231,11 @@ export function AppShell({
                     </DropdownMenuItem>
                     <DropdownMenuItem>
                       <Settings className="mr-2 h-4 w-4" /> Settings
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link to="/admin/dashboard">
+                        <ShieldCheck className="mr-2 h-4 w-4" /> Admin
+                      </Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem onClick={handleLogout} className="text-destructive focus:text-destructive">

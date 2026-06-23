@@ -9,12 +9,15 @@ import {
   FileText,
   LayoutDashboard,
   LogOut,
+  MessageSquare,
   Menu,
   PlusCircle,
   Settings,
+  ShieldCheck,
   Sparkles,
   Star,
   User as UserIcon,
+  Wallet,
 } from "lucide-react";
 import { Logo } from "@/components/common/Logo";
 import { Button } from "@/components/ui/button";

@@ -93,6 +93,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Ikusasa — Where emerging talent gets to work" },
+      { name: "description", content: "Launchpad Hub is a modern SaaS marketplace connecting students, graduates, and businesses for freelance, internship, and entry-level opportunities." },
+      { property: "og:description", content: "Launchpad Hub is a modern SaaS marketplace connecting students, graduates, and businesses for freelance, internship, and entry-level opportunities." },
+      { name: "twitter:description", content: "Launchpad Hub is a modern SaaS marketplace connecting students, graduates, and businesses for freelance, internship, and entry-level opportunities." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/391f5a21-0028-471e-b078-e44c469aa02c/id-preview-b24cd45f--8a837adc-9d54-4d22-8c45-da2ac3ba4e75.lovable.app-1782209163707.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/391f5a21-0028-471e-b078-e44c469aa02c/id-preview-b24cd45f--8a837adc-9d54-4d22-8c45-da2ac3ba4e75.lovable.app-1782209163707.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

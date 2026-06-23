@@ -26,7 +26,8 @@ function Sparkline({ values }: { values: number[] }) {
     <svg viewBox={`0 0 ${w} ${h}`} className="h-16 w-full">
       <polyline
         fill="none"
-        stroke="hsl(var(--primary))"
+        stroke="currentColor"
+        className="text-primary"
         strokeWidth="2.5"
         strokeLinecap="round"
         strokeLinejoin="round"

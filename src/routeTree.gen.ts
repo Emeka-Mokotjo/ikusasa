@@ -9,26 +9,41 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WalletRouteImport } from './routes/wallet'
 import { Route as RegisterRouteImport } from './routes/register'
+import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as OpportunitiesIndexRouteImport } from './routes/opportunities.index'
+import { Route as MessagesIndexRouteImport } from './routes/messages.index'
 import { Route as StudentDashboardRouteImport } from './routes/student.dashboard'
 import { Route as StudentApplicationsRouteImport } from './routes/student.applications'
 import { Route as OpportunitiesOpportunityIdRouteImport } from './routes/opportunities.$opportunityId'
 import { Route as OnboardingStudentRouteImport } from './routes/onboarding.student'
 import { Route as OnboardingGraduateRouteImport } from './routes/onboarding.graduate'
 import { Route as OnboardingBusinessRouteImport } from './routes/onboarding.business'
+import { Route as MessagesConversationIdRouteImport } from './routes/messages.$conversationId'
 import { Route as GraduateDashboardRouteImport } from './routes/graduate.dashboard'
 import { Route as GraduateApplicationsRouteImport } from './routes/graduate.applications'
 import { Route as BusinessDashboardRouteImport } from './routes/business.dashboard'
+import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
 import { Route as BusinessOpportunitiesIndexRouteImport } from './routes/business.opportunities.index'
 import { Route as BusinessOpportunitiesNewRouteImport } from './routes/business.opportunities.new'
 
+const WalletRoute = WalletRouteImport.update({
+  id: '/wallet',
+  path: '/wallet',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
   path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -49,6 +64,11 @@ const IndexRoute = IndexRouteImport.update({
 const OpportunitiesIndexRoute = OpportunitiesIndexRouteImport.update({
   id: '/opportunities/',
   path: '/opportunities/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MessagesIndexRoute = MessagesIndexRouteImport.update({
+  id: '/messages/',
+  path: '/messages/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StudentDashboardRoute = StudentDashboardRouteImport.update({
@@ -82,6 +102,11 @@ const OnboardingBusinessRoute = OnboardingBusinessRouteImport.update({
   path: '/onboarding/business',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MessagesConversationIdRoute = MessagesConversationIdRouteImport.update({
+  id: '/messages/$conversationId',
+  path: '/messages/$conversationId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GraduateDashboardRoute = GraduateDashboardRouteImport.update({
   id: '/graduate/dashboard',
   path: '/graduate/dashboard',
@@ -95,6 +120,11 @@ const GraduateApplicationsRoute = GraduateApplicationsRouteImport.update({
 const BusinessDashboardRoute = BusinessDashboardRouteImport.update({
   id: '/business/dashboard',
   path: '/business/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminDashboardRoute = AdminDashboardRouteImport.update({
+  id: '/admin/dashboard',
+  path: '/admin/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BusinessOpportunitiesIndexRoute =
@@ -114,16 +144,21 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
   '/register': typeof RegisterRoute
+  '/wallet': typeof WalletRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
   '/business/dashboard': typeof BusinessDashboardRoute
   '/graduate/applications': typeof GraduateApplicationsRoute
   '/graduate/dashboard': typeof GraduateDashboardRoute
+  '/messages/$conversationId': typeof MessagesConversationIdRoute
   '/onboarding/business': typeof OnboardingBusinessRoute
   '/onboarding/graduate': typeof OnboardingGraduateRoute
   '/onboarding/student': typeof OnboardingStudentRoute
   '/opportunities/$opportunityId': typeof OpportunitiesOpportunityIdRoute
   '/student/applications': typeof StudentApplicationsRoute
   '/student/dashboard': typeof StudentDashboardRoute
+  '/messages/': typeof MessagesIndexRoute
   '/opportunities/': typeof OpportunitiesIndexRoute
   '/business/opportunities/new': typeof BusinessOpportunitiesNewRoute
   '/business/opportunities/': typeof BusinessOpportunitiesIndexRoute
@@ -132,16 +167,21 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
   '/register': typeof RegisterRoute
+  '/wallet': typeof WalletRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
   '/business/dashboard': typeof BusinessDashboardRoute
   '/graduate/applications': typeof GraduateApplicationsRoute
   '/graduate/dashboard': typeof GraduateDashboardRoute
+  '/messages/$conversationId': typeof MessagesConversationIdRoute
   '/onboarding/business': typeof OnboardingBusinessRoute
   '/onboarding/graduate': typeof OnboardingGraduateRoute
   '/onboarding/student': typeof OnboardingStudentRoute
   '/opportunities/$opportunityId': typeof OpportunitiesOpportunityIdRoute
   '/student/applications': typeof StudentApplicationsRoute
   '/student/dashboard': typeof StudentDashboardRoute
+  '/messages': typeof MessagesIndexRoute
   '/opportunities': typeof OpportunitiesIndexRoute
   '/business/opportunities/new': typeof BusinessOpportunitiesNewRoute
   '/business/opportunities': typeof BusinessOpportunitiesIndexRoute
@@ -151,16 +191,21 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
   '/register': typeof RegisterRoute
+  '/wallet': typeof WalletRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
   '/business/dashboard': typeof BusinessDashboardRoute
   '/graduate/applications': typeof GraduateApplicationsRoute
   '/graduate/dashboard': typeof GraduateDashboardRoute
+  '/messages/$conversationId': typeof MessagesConversationIdRoute
   '/onboarding/business': typeof OnboardingBusinessRoute
   '/onboarding/graduate': typeof OnboardingGraduateRoute
   '/onboarding/student': typeof OnboardingStudentRoute
   '/opportunities/$opportunityId': typeof OpportunitiesOpportunityIdRoute
   '/student/applications': typeof StudentApplicationsRoute
   '/student/dashboard': typeof StudentDashboardRoute
+  '/messages/': typeof MessagesIndexRoute
   '/opportunities/': typeof OpportunitiesIndexRoute
   '/business/opportunities/new': typeof BusinessOpportunitiesNewRoute
   '/business/opportunities/': typeof BusinessOpportunitiesIndexRoute
@@ -171,16 +216,21 @@ export interface FileRouteTypes {
     | '/'
     | '/forgot-password'
     | '/login'
+    | '/notifications'
     | '/register'
+    | '/wallet'
+    | '/admin/dashboard'
     | '/business/dashboard'
     | '/graduate/applications'
     | '/graduate/dashboard'
+    | '/messages/$conversationId'
     | '/onboarding/business'
     | '/onboarding/graduate'
     | '/onboarding/student'
     | '/opportunities/$opportunityId'
     | '/student/applications'
     | '/student/dashboard'
+    | '/messages/'
     | '/opportunities/'
     | '/business/opportunities/new'
     | '/business/opportunities/'
@@ -189,16 +239,21 @@ export interface FileRouteTypes {
     | '/'
     | '/forgot-password'
     | '/login'
+    | '/notifications'
     | '/register'
+    | '/wallet'
+    | '/admin/dashboard'
     | '/business/dashboard'
     | '/graduate/applications'
     | '/graduate/dashboard'
+    | '/messages/$conversationId'
     | '/onboarding/business'
     | '/onboarding/graduate'
     | '/onboarding/student'
     | '/opportunities/$opportunityId'
     | '/student/applications'
     | '/student/dashboard'
+    | '/messages'
     | '/opportunities'
     | '/business/opportunities/new'
     | '/business/opportunities'
@@ -207,16 +262,21 @@ export interface FileRouteTypes {
     | '/'
     | '/forgot-password'
     | '/login'
+    | '/notifications'
     | '/register'
+    | '/wallet'
+    | '/admin/dashboard'
     | '/business/dashboard'
     | '/graduate/applications'
     | '/graduate/dashboard'
+    | '/messages/$conversationId'
     | '/onboarding/business'
     | '/onboarding/graduate'
     | '/onboarding/student'
     | '/opportunities/$opportunityId'
     | '/student/applications'
     | '/student/dashboard'
+    | '/messages/'
     | '/opportunities/'
     | '/business/opportunities/new'
     | '/business/opportunities/'
@@ -226,16 +286,21 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ForgotPasswordRoute: typeof ForgotPasswordRoute
   LoginRoute: typeof LoginRoute
+  NotificationsRoute: typeof NotificationsRoute
   RegisterRoute: typeof RegisterRoute
+  WalletRoute: typeof WalletRoute
+  AdminDashboardRoute: typeof AdminDashboardRoute
   BusinessDashboardRoute: typeof BusinessDashboardRoute
   GraduateApplicationsRoute: typeof GraduateApplicationsRoute
   GraduateDashboardRoute: typeof GraduateDashboardRoute
+  MessagesConversationIdRoute: typeof MessagesConversationIdRoute
   OnboardingBusinessRoute: typeof OnboardingBusinessRoute
   OnboardingGraduateRoute: typeof OnboardingGraduateRoute
   OnboardingStudentRoute: typeof OnboardingStudentRoute
   OpportunitiesOpportunityIdRoute: typeof OpportunitiesOpportunityIdRoute
   StudentApplicationsRoute: typeof StudentApplicationsRoute
   StudentDashboardRoute: typeof StudentDashboardRoute
+  MessagesIndexRoute: typeof MessagesIndexRoute
   OpportunitiesIndexRoute: typeof OpportunitiesIndexRoute
   BusinessOpportunitiesNewRoute: typeof BusinessOpportunitiesNewRoute
   BusinessOpportunitiesIndexRoute: typeof BusinessOpportunitiesIndexRoute
@@ -243,11 +308,25 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/wallet': {
+      id: '/wallet'
+      path: '/wallet'
+      fullPath: '/wallet'
+      preLoaderRoute: typeof WalletRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/register': {
       id: '/register'
       path: '/register'
       fullPath: '/register'
       preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -276,6 +355,13 @@ declare module '@tanstack/react-router' {
       path: '/opportunities'
       fullPath: '/opportunities/'
       preLoaderRoute: typeof OpportunitiesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/messages/': {
+      id: '/messages/'
+      path: '/messages'
+      fullPath: '/messages/'
+      preLoaderRoute: typeof MessagesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/student/dashboard': {
@@ -320,6 +406,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OnboardingBusinessRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/messages/$conversationId': {
+      id: '/messages/$conversationId'
+      path: '/messages/$conversationId'
+      fullPath: '/messages/$conversationId'
+      preLoaderRoute: typeof MessagesConversationIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/graduate/dashboard': {
       id: '/graduate/dashboard'
       path: '/graduate/dashboard'
@@ -339,6 +432,13 @@ declare module '@tanstack/react-router' {
       path: '/business/dashboard'
       fullPath: '/business/dashboard'
       preLoaderRoute: typeof BusinessDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/dashboard': {
+      id: '/admin/dashboard'
+      path: '/admin/dashboard'
+      fullPath: '/admin/dashboard'
+      preLoaderRoute: typeof AdminDashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/business/opportunities/': {
@@ -362,16 +462,21 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ForgotPasswordRoute: ForgotPasswordRoute,
   LoginRoute: LoginRoute,
+  NotificationsRoute: NotificationsRoute,
   RegisterRoute: RegisterRoute,
+  WalletRoute: WalletRoute,
+  AdminDashboardRoute: AdminDashboardRoute,
   BusinessDashboardRoute: BusinessDashboardRoute,
   GraduateApplicationsRoute: GraduateApplicationsRoute,
   GraduateDashboardRoute: GraduateDashboardRoute,
+  MessagesConversationIdRoute: MessagesConversationIdRoute,
   OnboardingBusinessRoute: OnboardingBusinessRoute,
   OnboardingGraduateRoute: OnboardingGraduateRoute,
   OnboardingStudentRoute: OnboardingStudentRoute,
   OpportunitiesOpportunityIdRoute: OpportunitiesOpportunityIdRoute,
   StudentApplicationsRoute: StudentApplicationsRoute,
   StudentDashboardRoute: StudentDashboardRoute,
+  MessagesIndexRoute: MessagesIndexRoute,
   OpportunitiesIndexRoute: OpportunitiesIndexRoute,
   BusinessOpportunitiesNewRoute: BusinessOpportunitiesNewRoute,
   BusinessOpportunitiesIndexRoute: BusinessOpportunitiesIndexRoute,

@@ -44,12 +44,23 @@ type NavItem = {
 };
 
 function navForRole(role: string | undefined): NavItem[] {
+  if (role === "admin") {
+    return [
+      { to: "/admin/dashboard", label: "Overview", icon: LayoutDashboard },
+      { to: "/opportunities", label: "Marketplace", icon: Compass },
+      { to: "/messages", label: "Messages", icon: MessageSquare },
+      { to: "/notifications", label: "Notifications", icon: Bell },
+    ];
+  }
   if (role === "business") {
     return [
       { to: "/business/dashboard", label: "Overview", icon: LayoutDashboard },
       { to: "/business/opportunities", label: "Opportunities", icon: Briefcase },
       { to: "/business/opportunities/new", label: "Post a role", icon: PlusCircle },
       { to: "/opportunities", label: "Browse marketplace", icon: Compass },
+      { to: "/messages", label: "Messages", icon: MessageSquare },
+      { to: "/wallet", label: "Billing & payouts", icon: Wallet },
+      { to: "/notifications", label: "Notifications", icon: Bell },
     ];
   }
   const base = role === "graduate" ? "/graduate" : "/student";
@@ -57,6 +68,9 @@ function navForRole(role: string | undefined): NavItem[] {
     { to: `${base}/dashboard`, label: "Overview", icon: LayoutDashboard },
     { to: "/opportunities", label: "Find work", icon: Compass },
     { to: `${base}/applications`, label: "Applications", icon: FileText },
+    { to: "/messages", label: "Messages", icon: MessageSquare },
+    { to: "/wallet", label: "Wallet", icon: Wallet },
+    { to: "/notifications", label: "Notifications", icon: Bell },
   ];
 }
 

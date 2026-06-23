@@ -190,9 +190,16 @@ export function AppShell({
                 <Logo />
               </div>
               <div className="ml-auto flex items-center gap-2">
-                <Button variant="ghost" size="icon" aria-label="Notifications" className="relative">
-                  <Bell className="h-5 w-5" />
-                  <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-primary" />
+                <Button asChild variant="ghost" size="icon" aria-label="Notifications" className="relative">
+                  <Link to="/notifications">
+                    <Bell className="h-5 w-5" />
+                    <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-primary" />
+                  </Link>
+                </Button>
+                <Button asChild variant="ghost" size="icon" aria-label="Messages" className="hidden sm:inline-flex">
+                  <Link to="/messages">
+                    <MessageSquare className="h-5 w-5" />
+                  </Link>
                 </Button>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>

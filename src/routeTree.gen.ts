@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WalletRouteImport } from './routes/wallet'
+import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as NotificationsRouteImport } from './routes/notifications'
@@ -36,6 +37,11 @@ import { Route as BusinessOpportunitiesNewRouteImport } from './routes/business.
 const WalletRoute = WalletRouteImport.update({
   id: '/wallet',
   path: '/wallet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewsRoute = ReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RegisterRoute = RegisterRouteImport.update({
@@ -159,6 +165,7 @@ export interface FileRoutesByFullPath {
   '/notifications': typeof NotificationsRoute
   '/profile': typeof ProfileRouteWithChildren
   '/register': typeof RegisterRoute
+  '/reviews': typeof ReviewsRoute
   '/wallet': typeof WalletRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/business/dashboard': typeof BusinessDashboardRoute
@@ -184,6 +191,7 @@ export interface FileRoutesByTo {
   '/notifications': typeof NotificationsRoute
   '/profile': typeof ProfileRouteWithChildren
   '/register': typeof RegisterRoute
+  '/reviews': typeof ReviewsRoute
   '/wallet': typeof WalletRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/business/dashboard': typeof BusinessDashboardRoute
@@ -210,6 +218,7 @@ export interface FileRoutesById {
   '/notifications': typeof NotificationsRoute
   '/profile': typeof ProfileRouteWithChildren
   '/register': typeof RegisterRoute
+  '/reviews': typeof ReviewsRoute
   '/wallet': typeof WalletRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/business/dashboard': typeof BusinessDashboardRoute
@@ -237,6 +246,7 @@ export interface FileRouteTypes {
     | '/notifications'
     | '/profile'
     | '/register'
+    | '/reviews'
     | '/wallet'
     | '/admin/dashboard'
     | '/business/dashboard'
@@ -262,6 +272,7 @@ export interface FileRouteTypes {
     | '/notifications'
     | '/profile'
     | '/register'
+    | '/reviews'
     | '/wallet'
     | '/admin/dashboard'
     | '/business/dashboard'
@@ -287,6 +298,7 @@ export interface FileRouteTypes {
     | '/notifications'
     | '/profile'
     | '/register'
+    | '/reviews'
     | '/wallet'
     | '/admin/dashboard'
     | '/business/dashboard'
@@ -313,6 +325,7 @@ export interface RootRouteChildren {
   NotificationsRoute: typeof NotificationsRoute
   ProfileRoute: typeof ProfileRouteWithChildren
   RegisterRoute: typeof RegisterRoute
+  ReviewsRoute: typeof ReviewsRoute
   WalletRoute: typeof WalletRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
   BusinessDashboardRoute: typeof BusinessDashboardRoute
@@ -338,6 +351,13 @@ declare module '@tanstack/react-router' {
       path: '/wallet'
       fullPath: '/wallet'
       preLoaderRoute: typeof WalletRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/register': {
@@ -515,6 +535,7 @@ const rootRouteChildren: RootRouteChildren = {
   NotificationsRoute: NotificationsRoute,
   ProfileRoute: ProfileRouteWithChildren,
   RegisterRoute: RegisterRoute,
+  ReviewsRoute: ReviewsRoute,
   WalletRoute: WalletRoute,
   AdminDashboardRoute: AdminDashboardRoute,
   BusinessDashboardRoute: BusinessDashboardRoute,

@@ -193,7 +193,7 @@ function AppearanceSection() {
       </CardHeader>
       <CardContent className="space-y-4">
         <Field label="Theme">
-          <Select value={theme} onValueChange={(v) => setTheme(v as "light" | "dark" | "system")}>
+          <Select value={theme} onValueChange={(v) => setTheme(v as "light" | "dark")}>
             <SelectTrigger className="w-full max-w-xs"><SelectValue /></SelectTrigger>
             <SelectContent>
               <SelectItem value="light">Light</SelectItem>

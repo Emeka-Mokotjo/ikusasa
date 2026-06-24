@@ -20,6 +20,7 @@ import { Route as OpportunitiesIndexRouteImport } from './routes/opportunities.i
 import { Route as MessagesIndexRouteImport } from './routes/messages.index'
 import { Route as StudentDashboardRouteImport } from './routes/student.dashboard'
 import { Route as StudentApplicationsRouteImport } from './routes/student.applications'
+import { Route as ProfileUserIdRouteImport } from './routes/profile.$userId'
 import { Route as OpportunitiesOpportunityIdRouteImport } from './routes/opportunities.$opportunityId'
 import { Route as OnboardingStudentRouteImport } from './routes/onboarding.student'
 import { Route as OnboardingGraduateRouteImport } from './routes/onboarding.graduate'
@@ -87,6 +88,11 @@ const StudentApplicationsRoute = StudentApplicationsRouteImport.update({
   path: '/student/applications',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProfileUserIdRoute = ProfileUserIdRouteImport.update({
+  id: '/$userId',
+  path: '/$userId',
+  getParentRoute: () => ProfileRoute,
+} as any)
 const OpportunitiesOpportunityIdRoute =
   OpportunitiesOpportunityIdRouteImport.update({
     id: '/opportunities/$opportunityId',
@@ -151,7 +157,7 @@ export interface FileRoutesByFullPath {
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
-  '/profile': typeof ProfileRoute
+  '/profile': typeof ProfileRouteWithChildren
   '/register': typeof RegisterRoute
   '/wallet': typeof WalletRoute
   '/admin/dashboard': typeof AdminDashboardRoute
@@ -163,6 +169,7 @@ export interface FileRoutesByFullPath {
   '/onboarding/graduate': typeof OnboardingGraduateRoute
   '/onboarding/student': typeof OnboardingStudentRoute
   '/opportunities/$opportunityId': typeof OpportunitiesOpportunityIdRoute
+  '/profile/$userId': typeof ProfileUserIdRoute
   '/student/applications': typeof StudentApplicationsRoute
   '/student/dashboard': typeof StudentDashboardRoute
   '/messages/': typeof MessagesIndexRoute
@@ -175,7 +182,7 @@ export interface FileRoutesByTo {
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
-  '/profile': typeof ProfileRoute
+  '/profile': typeof ProfileRouteWithChildren
   '/register': typeof RegisterRoute
   '/wallet': typeof WalletRoute
   '/admin/dashboard': typeof AdminDashboardRoute
@@ -187,6 +194,7 @@ export interface FileRoutesByTo {
   '/onboarding/graduate': typeof OnboardingGraduateRoute
   '/onboarding/student': typeof OnboardingStudentRoute
   '/opportunities/$opportunityId': typeof OpportunitiesOpportunityIdRoute
+  '/profile/$userId': typeof ProfileUserIdRoute
   '/student/applications': typeof StudentApplicationsRoute
   '/student/dashboard': typeof StudentDashboardRoute
   '/messages': typeof MessagesIndexRoute
@@ -200,7 +208,7 @@ export interface FileRoutesById {
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
-  '/profile': typeof ProfileRoute
+  '/profile': typeof ProfileRouteWithChildren
   '/register': typeof RegisterRoute
   '/wallet': typeof WalletRoute
   '/admin/dashboard': typeof AdminDashboardRoute
@@ -212,6 +220,7 @@ export interface FileRoutesById {
   '/onboarding/graduate': typeof OnboardingGraduateRoute
   '/onboarding/student': typeof OnboardingStudentRoute
   '/opportunities/$opportunityId': typeof OpportunitiesOpportunityIdRoute
+  '/profile/$userId': typeof ProfileUserIdRoute
   '/student/applications': typeof StudentApplicationsRoute
   '/student/dashboard': typeof StudentDashboardRoute
   '/messages/': typeof MessagesIndexRoute
@@ -238,6 +247,7 @@ export interface FileRouteTypes {
     | '/onboarding/graduate'
     | '/onboarding/student'
     | '/opportunities/$opportunityId'
+    | '/profile/$userId'
     | '/student/applications'
     | '/student/dashboard'
     | '/messages/'
@@ -262,6 +272,7 @@ export interface FileRouteTypes {
     | '/onboarding/graduate'
     | '/onboarding/student'
     | '/opportunities/$opportunityId'
+    | '/profile/$userId'
     | '/student/applications'
     | '/student/dashboard'
     | '/messages'
@@ -286,6 +297,7 @@ export interface FileRouteTypes {
     | '/onboarding/graduate'
     | '/onboarding/student'
     | '/opportunities/$opportunityId'
+    | '/profile/$userId'
     | '/student/applications'
     | '/student/dashboard'
     | '/messages/'
@@ -299,7 +311,7 @@ export interface RootRouteChildren {
   ForgotPasswordRoute: typeof ForgotPasswordRoute
   LoginRoute: typeof LoginRoute
   NotificationsRoute: typeof NotificationsRoute
-  ProfileRoute: typeof ProfileRoute
+  ProfileRoute: typeof ProfileRouteWithChildren
   RegisterRoute: typeof RegisterRoute
   WalletRoute: typeof WalletRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
@@ -398,6 +410,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StudentApplicationsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/profile/$userId': {
+      id: '/profile/$userId'
+      path: '/$userId'
+      fullPath: '/profile/$userId'
+      preLoaderRoute: typeof ProfileUserIdRouteImport
+      parentRoute: typeof ProfileRoute
+    }
     '/opportunities/$opportunityId': {
       id: '/opportunities/$opportunityId'
       path: '/opportunities/$opportunityId'
@@ -478,12 +497,23 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface ProfileRouteChildren {
+  ProfileUserIdRoute: typeof ProfileUserIdRoute
+}
+
+const ProfileRouteChildren: ProfileRouteChildren = {
+  ProfileUserIdRoute: ProfileUserIdRoute,
+}
+
+const ProfileRouteWithChildren =
+  ProfileRoute._addFileChildren(ProfileRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ForgotPasswordRoute: ForgotPasswordRoute,
   LoginRoute: LoginRoute,
   NotificationsRoute: NotificationsRoute,
-  ProfileRoute: ProfileRoute,
+  ProfileRoute: ProfileRouteWithChildren,
   RegisterRoute: RegisterRoute,
   WalletRoute: WalletRoute,
   AdminDashboardRoute: AdminDashboardRoute,

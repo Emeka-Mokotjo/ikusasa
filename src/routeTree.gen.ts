@@ -10,7 +10,10 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WalletRouteImport } from './routes/wallet'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as RegisterRouteImport } from './routes/register'
+import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
@@ -19,6 +22,7 @@ import { Route as OpportunitiesIndexRouteImport } from './routes/opportunities.i
 import { Route as MessagesIndexRouteImport } from './routes/messages.index'
 import { Route as StudentDashboardRouteImport } from './routes/student.dashboard'
 import { Route as StudentApplicationsRouteImport } from './routes/student.applications'
+import { Route as ProfileUserIdRouteImport } from './routes/profile.$userId'
 import { Route as OpportunitiesOpportunityIdRouteImport } from './routes/opportunities.$opportunityId'
 import { Route as OnboardingStudentRouteImport } from './routes/onboarding.student'
 import { Route as OnboardingGraduateRouteImport } from './routes/onboarding.graduate'
@@ -36,9 +40,24 @@ const WalletRoute = WalletRouteImport.update({
   path: '/wallet',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewsRoute = ReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
   path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NotificationsRoute = NotificationsRouteImport.update({
@@ -80,6 +99,11 @@ const StudentApplicationsRoute = StudentApplicationsRouteImport.update({
   id: '/student/applications',
   path: '/student/applications',
   getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileUserIdRoute = ProfileUserIdRouteImport.update({
+  id: '/$userId',
+  path: '/$userId',
+  getParentRoute: () => ProfileRoute,
 } as any)
 const OpportunitiesOpportunityIdRoute =
   OpportunitiesOpportunityIdRouteImport.update({
@@ -145,7 +169,10 @@ export interface FileRoutesByFullPath {
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRouteWithChildren
   '/register': typeof RegisterRoute
+  '/reviews': typeof ReviewsRoute
+  '/settings': typeof SettingsRoute
   '/wallet': typeof WalletRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/business/dashboard': typeof BusinessDashboardRoute
@@ -156,6 +183,7 @@ export interface FileRoutesByFullPath {
   '/onboarding/graduate': typeof OnboardingGraduateRoute
   '/onboarding/student': typeof OnboardingStudentRoute
   '/opportunities/$opportunityId': typeof OpportunitiesOpportunityIdRoute
+  '/profile/$userId': typeof ProfileUserIdRoute
   '/student/applications': typeof StudentApplicationsRoute
   '/student/dashboard': typeof StudentDashboardRoute
   '/messages/': typeof MessagesIndexRoute
@@ -168,7 +196,10 @@ export interface FileRoutesByTo {
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRouteWithChildren
   '/register': typeof RegisterRoute
+  '/reviews': typeof ReviewsRoute
+  '/settings': typeof SettingsRoute
   '/wallet': typeof WalletRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/business/dashboard': typeof BusinessDashboardRoute
@@ -179,6 +210,7 @@ export interface FileRoutesByTo {
   '/onboarding/graduate': typeof OnboardingGraduateRoute
   '/onboarding/student': typeof OnboardingStudentRoute
   '/opportunities/$opportunityId': typeof OpportunitiesOpportunityIdRoute
+  '/profile/$userId': typeof ProfileUserIdRoute
   '/student/applications': typeof StudentApplicationsRoute
   '/student/dashboard': typeof StudentDashboardRoute
   '/messages': typeof MessagesIndexRoute
@@ -192,7 +224,10 @@ export interface FileRoutesById {
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRouteWithChildren
   '/register': typeof RegisterRoute
+  '/reviews': typeof ReviewsRoute
+  '/settings': typeof SettingsRoute
   '/wallet': typeof WalletRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/business/dashboard': typeof BusinessDashboardRoute
@@ -203,6 +238,7 @@ export interface FileRoutesById {
   '/onboarding/graduate': typeof OnboardingGraduateRoute
   '/onboarding/student': typeof OnboardingStudentRoute
   '/opportunities/$opportunityId': typeof OpportunitiesOpportunityIdRoute
+  '/profile/$userId': typeof ProfileUserIdRoute
   '/student/applications': typeof StudentApplicationsRoute
   '/student/dashboard': typeof StudentDashboardRoute
   '/messages/': typeof MessagesIndexRoute
@@ -217,7 +253,10 @@ export interface FileRouteTypes {
     | '/forgot-password'
     | '/login'
     | '/notifications'
+    | '/profile'
     | '/register'
+    | '/reviews'
+    | '/settings'
     | '/wallet'
     | '/admin/dashboard'
     | '/business/dashboard'
@@ -228,6 +267,7 @@ export interface FileRouteTypes {
     | '/onboarding/graduate'
     | '/onboarding/student'
     | '/opportunities/$opportunityId'
+    | '/profile/$userId'
     | '/student/applications'
     | '/student/dashboard'
     | '/messages/'
@@ -240,7 +280,10 @@ export interface FileRouteTypes {
     | '/forgot-password'
     | '/login'
     | '/notifications'
+    | '/profile'
     | '/register'
+    | '/reviews'
+    | '/settings'
     | '/wallet'
     | '/admin/dashboard'
     | '/business/dashboard'
@@ -251,6 +294,7 @@ export interface FileRouteTypes {
     | '/onboarding/graduate'
     | '/onboarding/student'
     | '/opportunities/$opportunityId'
+    | '/profile/$userId'
     | '/student/applications'
     | '/student/dashboard'
     | '/messages'
@@ -263,7 +307,10 @@ export interface FileRouteTypes {
     | '/forgot-password'
     | '/login'
     | '/notifications'
+    | '/profile'
     | '/register'
+    | '/reviews'
+    | '/settings'
     | '/wallet'
     | '/admin/dashboard'
     | '/business/dashboard'
@@ -274,6 +321,7 @@ export interface FileRouteTypes {
     | '/onboarding/graduate'
     | '/onboarding/student'
     | '/opportunities/$opportunityId'
+    | '/profile/$userId'
     | '/student/applications'
     | '/student/dashboard'
     | '/messages/'
@@ -287,7 +335,10 @@ export interface RootRouteChildren {
   ForgotPasswordRoute: typeof ForgotPasswordRoute
   LoginRoute: typeof LoginRoute
   NotificationsRoute: typeof NotificationsRoute
+  ProfileRoute: typeof ProfileRouteWithChildren
   RegisterRoute: typeof RegisterRoute
+  ReviewsRoute: typeof ReviewsRoute
+  SettingsRoute: typeof SettingsRoute
   WalletRoute: typeof WalletRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
   BusinessDashboardRoute: typeof BusinessDashboardRoute
@@ -315,11 +366,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WalletRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/register': {
       id: '/register'
       path: '/register'
       fullPath: '/register'
       preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/notifications': {
@@ -377,6 +449,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/student/applications'
       preLoaderRoute: typeof StudentApplicationsRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/profile/$userId': {
+      id: '/profile/$userId'
+      path: '/$userId'
+      fullPath: '/profile/$userId'
+      preLoaderRoute: typeof ProfileUserIdRouteImport
+      parentRoute: typeof ProfileRoute
     }
     '/opportunities/$opportunityId': {
       id: '/opportunities/$opportunityId'
@@ -458,12 +537,26 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface ProfileRouteChildren {
+  ProfileUserIdRoute: typeof ProfileUserIdRoute
+}
+
+const ProfileRouteChildren: ProfileRouteChildren = {
+  ProfileUserIdRoute: ProfileUserIdRoute,
+}
+
+const ProfileRouteWithChildren =
+  ProfileRoute._addFileChildren(ProfileRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ForgotPasswordRoute: ForgotPasswordRoute,
   LoginRoute: LoginRoute,
   NotificationsRoute: NotificationsRoute,
+  ProfileRoute: ProfileRouteWithChildren,
   RegisterRoute: RegisterRoute,
+  ReviewsRoute: ReviewsRoute,
+  SettingsRoute: SettingsRoute,
   WalletRoute: WalletRoute,
   AdminDashboardRoute: AdminDashboardRoute,
   BusinessDashboardRoute: BusinessDashboardRoute,

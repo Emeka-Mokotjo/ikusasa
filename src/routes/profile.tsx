@@ -25,7 +25,7 @@ function ProfilePage() {
     return (
       <AppShell title="Profile">
         <EmptyState
-          icon={UserIcon}
+          icon={<UserIcon className="h-8 w-8" />}
           title="Sign in to view your profile"
           description="You need an account to manage your Ikusasa profile."
           action={<Button onClick={() => navigate({ to: "/login" })}>Sign in</Button>}
@@ -103,7 +103,7 @@ function ProfilePage() {
           <CardContent>
             {reviews.length === 0 ? (
               <EmptyState
-                icon={Star}
+                icon={<Star className="h-8 w-8" />}
                 title="No reviews yet"
                 description="Once you complete projects, businesses and talent can review you here."
               />

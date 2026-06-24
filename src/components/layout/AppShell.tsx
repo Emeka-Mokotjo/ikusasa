@@ -223,14 +223,20 @@ export function AppShell({
                       </span>
                     </DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem>
-                      <UserIcon className="mr-2 h-4 w-4" /> Profile
+                    <DropdownMenuItem asChild>
+                      <Link to="/profile">
+                        <UserIcon className="mr-2 h-4 w-4" /> Profile
+                      </Link>
                     </DropdownMenuItem>
-                    <DropdownMenuItem>
-                      <Star className="mr-2 h-4 w-4" /> Reviews
+                    <DropdownMenuItem asChild>
+                      <Link to="/reviews">
+                        <Star className="mr-2 h-4 w-4" /> Reviews
+                      </Link>
                     </DropdownMenuItem>
-                    <DropdownMenuItem>
-                      <Settings className="mr-2 h-4 w-4" /> Settings
+                    <DropdownMenuItem asChild>
+                      <Link to="/settings">
+                        <Settings className="mr-2 h-4 w-4" /> Settings
+                      </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
                       <Link to="/admin/dashboard">

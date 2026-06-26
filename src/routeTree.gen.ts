@@ -32,6 +32,7 @@ import { Route as GraduateDashboardRouteImport } from './routes/graduate.dashboa
 import { Route as GraduateApplicationsRouteImport } from './routes/graduate.applications'
 import { Route as BusinessDashboardRouteImport } from './routes/business.dashboard'
 import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
+import { Route as AdminBusinessesRouteImport } from './routes/admin.businesses'
 import { Route as BusinessOpportunitiesIndexRouteImport } from './routes/business.opportunities.index'
 import { Route as BusinessOpportunitiesNewRouteImport } from './routes/business.opportunities.new'
 import { Route as BusinessOpportunitiesOpportunityIdApplicantsRouteImport } from './routes/business.opportunities.$opportunityId.applicants'
@@ -152,6 +153,11 @@ const AdminDashboardRoute = AdminDashboardRouteImport.update({
   path: '/admin/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminBusinessesRoute = AdminBusinessesRouteImport.update({
+  id: '/admin/businesses',
+  path: '/admin/businesses',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BusinessOpportunitiesIndexRoute =
   BusinessOpportunitiesIndexRouteImport.update({
     id: '/business/opportunities/',
@@ -181,6 +187,7 @@ export interface FileRoutesByFullPath {
   '/reviews': typeof ReviewsRoute
   '/settings': typeof SettingsRoute
   '/wallet': typeof WalletRoute
+  '/admin/businesses': typeof AdminBusinessesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/business/dashboard': typeof BusinessDashboardRoute
   '/graduate/applications': typeof GraduateApplicationsRoute
@@ -209,6 +216,7 @@ export interface FileRoutesByTo {
   '/reviews': typeof ReviewsRoute
   '/settings': typeof SettingsRoute
   '/wallet': typeof WalletRoute
+  '/admin/businesses': typeof AdminBusinessesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/business/dashboard': typeof BusinessDashboardRoute
   '/graduate/applications': typeof GraduateApplicationsRoute
@@ -238,6 +246,7 @@ export interface FileRoutesById {
   '/reviews': typeof ReviewsRoute
   '/settings': typeof SettingsRoute
   '/wallet': typeof WalletRoute
+  '/admin/businesses': typeof AdminBusinessesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/business/dashboard': typeof BusinessDashboardRoute
   '/graduate/applications': typeof GraduateApplicationsRoute
@@ -268,6 +277,7 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/settings'
     | '/wallet'
+    | '/admin/businesses'
     | '/admin/dashboard'
     | '/business/dashboard'
     | '/graduate/applications'
@@ -296,6 +306,7 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/settings'
     | '/wallet'
+    | '/admin/businesses'
     | '/admin/dashboard'
     | '/business/dashboard'
     | '/graduate/applications'
@@ -324,6 +335,7 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/settings'
     | '/wallet'
+    | '/admin/businesses'
     | '/admin/dashboard'
     | '/business/dashboard'
     | '/graduate/applications'
@@ -353,6 +365,7 @@ export interface RootRouteChildren {
   ReviewsRoute: typeof ReviewsRoute
   SettingsRoute: typeof SettingsRoute
   WalletRoute: typeof WalletRoute
+  AdminBusinessesRoute: typeof AdminBusinessesRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
   BusinessDashboardRoute: typeof BusinessDashboardRoute
   GraduateApplicationsRoute: typeof GraduateApplicationsRoute
@@ -534,6 +547,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminDashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/businesses': {
+      id: '/admin/businesses'
+      path: '/admin/businesses'
+      fullPath: '/admin/businesses'
+      preLoaderRoute: typeof AdminBusinessesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/business/opportunities/': {
       id: '/business/opportunities/'
       path: '/business/opportunities'
@@ -579,6 +599,7 @@ const rootRouteChildren: RootRouteChildren = {
   ReviewsRoute: ReviewsRoute,
   SettingsRoute: SettingsRoute,
   WalletRoute: WalletRoute,
+  AdminBusinessesRoute: AdminBusinessesRoute,
   AdminDashboardRoute: AdminDashboardRoute,
   BusinessDashboardRoute: BusinessDashboardRoute,
   GraduateApplicationsRoute: GraduateApplicationsRoute,

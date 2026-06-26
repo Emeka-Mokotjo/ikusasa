@@ -1,6 +1,7 @@
 import { delay } from "./_delay";
 import { mockApplications } from "@/mock-data/applications";
-import type { Application } from "@/types";
+import type { Application, ApplicationStatus } from "@/types";
+
 
 export const applicationService = {
   async byApplicantId(applicantId: string): Promise<Application[]> {
@@ -33,5 +34,10 @@ export const applicationService = {
       status: "submitted",
       submittedAt: new Date().toISOString(),
     });
+  },
+  async updateStatus(applicationId: string, status: ApplicationStatus): Promise<void> {
+    const a = mockApplications.find((x) => x.id === applicationId);
+    if (a) a.status = status;
+    return delay(undefined, 200);
   },
 };

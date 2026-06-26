@@ -47,6 +47,11 @@ function navForRole(role: string | undefined): NavItem[] {
   if (role === "admin") {
     return [
       { to: "/admin/dashboard", label: "Overview", icon: LayoutDashboard },
+      { to: "/admin/users", label: "Users", icon: UserIcon },
+      { to: "/admin/businesses", label: "Businesses", icon: Building2 },
+      { to: "/admin/placements", label: "Placements", icon: Briefcase },
+      { to: "/admin/disputes", label: "Disputes", icon: ShieldCheck },
+      { to: "/admin/payouts", label: "Payouts", icon: Wallet },
       { to: "/opportunities", label: "Marketplace", icon: Compass },
       { to: "/messages", label: "Messages", icon: MessageSquare },
       { to: "/notifications", label: "Notifications", icon: Bell },

@@ -199,3 +199,28 @@ export interface AdminStats {
   flaggedItems: number;
   signupsLast7Days: number[];
 }
+
+export type DisputeStatus = "open" | "in_review" | "resolved" | "rejected";
+
+export interface Dispute {
+  id: string;
+  opportunityTitle: string;
+  raisedByName: string;
+  raisedByRole: UserRole;
+  againstName: string;
+  reason: string;
+  amount?: number;
+  status: DisputeStatus;
+  createdAt: string;
+}
+
+export interface Placement {
+  id: string;
+  applicantName: string;
+  applicantRole: UserRole;
+  businessName: string;
+  opportunityTitle: string;
+  startedAt: string;
+  compensationAmount: number;
+  status: "active" | "completed";
+}

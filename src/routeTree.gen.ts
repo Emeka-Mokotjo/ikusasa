@@ -31,9 +31,15 @@ import { Route as MessagesConversationIdRouteImport } from './routes/messages.$c
 import { Route as GraduateDashboardRouteImport } from './routes/graduate.dashboard'
 import { Route as GraduateApplicationsRouteImport } from './routes/graduate.applications'
 import { Route as BusinessDashboardRouteImport } from './routes/business.dashboard'
+import { Route as AdminUsersRouteImport } from './routes/admin.users'
+import { Route as AdminPlacementsRouteImport } from './routes/admin.placements'
+import { Route as AdminPayoutsRouteImport } from './routes/admin.payouts'
+import { Route as AdminDisputesRouteImport } from './routes/admin.disputes'
 import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
+import { Route as AdminBusinessesRouteImport } from './routes/admin.businesses'
 import { Route as BusinessOpportunitiesIndexRouteImport } from './routes/business.opportunities.index'
 import { Route as BusinessOpportunitiesNewRouteImport } from './routes/business.opportunities.new'
+import { Route as BusinessOpportunitiesOpportunityIdApplicantsRouteImport } from './routes/business.opportunities.$opportunityId.applicants'
 
 const WalletRoute = WalletRouteImport.update({
   id: '/wallet',
@@ -146,9 +152,34 @@ const BusinessDashboardRoute = BusinessDashboardRouteImport.update({
   path: '/business/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminUsersRoute = AdminUsersRouteImport.update({
+  id: '/admin/users',
+  path: '/admin/users',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminPlacementsRoute = AdminPlacementsRouteImport.update({
+  id: '/admin/placements',
+  path: '/admin/placements',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminPayoutsRoute = AdminPayoutsRouteImport.update({
+  id: '/admin/payouts',
+  path: '/admin/payouts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminDisputesRoute = AdminDisputesRouteImport.update({
+  id: '/admin/disputes',
+  path: '/admin/disputes',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminDashboardRoute = AdminDashboardRouteImport.update({
   id: '/admin/dashboard',
   path: '/admin/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminBusinessesRoute = AdminBusinessesRouteImport.update({
+  id: '/admin/businesses',
+  path: '/admin/businesses',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BusinessOpportunitiesIndexRoute =
@@ -163,6 +194,12 @@ const BusinessOpportunitiesNewRoute =
     path: '/business/opportunities/new',
     getParentRoute: () => rootRouteImport,
   } as any)
+const BusinessOpportunitiesOpportunityIdApplicantsRoute =
+  BusinessOpportunitiesOpportunityIdApplicantsRouteImport.update({
+    id: '/business/opportunities/$opportunityId/applicants',
+    path: '/business/opportunities/$opportunityId/applicants',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -174,7 +211,12 @@ export interface FileRoutesByFullPath {
   '/reviews': typeof ReviewsRoute
   '/settings': typeof SettingsRoute
   '/wallet': typeof WalletRoute
+  '/admin/businesses': typeof AdminBusinessesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/disputes': typeof AdminDisputesRoute
+  '/admin/payouts': typeof AdminPayoutsRoute
+  '/admin/placements': typeof AdminPlacementsRoute
+  '/admin/users': typeof AdminUsersRoute
   '/business/dashboard': typeof BusinessDashboardRoute
   '/graduate/applications': typeof GraduateApplicationsRoute
   '/graduate/dashboard': typeof GraduateDashboardRoute
@@ -190,6 +232,7 @@ export interface FileRoutesByFullPath {
   '/opportunities/': typeof OpportunitiesIndexRoute
   '/business/opportunities/new': typeof BusinessOpportunitiesNewRoute
   '/business/opportunities/': typeof BusinessOpportunitiesIndexRoute
+  '/business/opportunities/$opportunityId/applicants': typeof BusinessOpportunitiesOpportunityIdApplicantsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -201,7 +244,12 @@ export interface FileRoutesByTo {
   '/reviews': typeof ReviewsRoute
   '/settings': typeof SettingsRoute
   '/wallet': typeof WalletRoute
+  '/admin/businesses': typeof AdminBusinessesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/disputes': typeof AdminDisputesRoute
+  '/admin/payouts': typeof AdminPayoutsRoute
+  '/admin/placements': typeof AdminPlacementsRoute
+  '/admin/users': typeof AdminUsersRoute
   '/business/dashboard': typeof BusinessDashboardRoute
   '/graduate/applications': typeof GraduateApplicationsRoute
   '/graduate/dashboard': typeof GraduateDashboardRoute
@@ -217,6 +265,7 @@ export interface FileRoutesByTo {
   '/opportunities': typeof OpportunitiesIndexRoute
   '/business/opportunities/new': typeof BusinessOpportunitiesNewRoute
   '/business/opportunities': typeof BusinessOpportunitiesIndexRoute
+  '/business/opportunities/$opportunityId/applicants': typeof BusinessOpportunitiesOpportunityIdApplicantsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -229,7 +278,12 @@ export interface FileRoutesById {
   '/reviews': typeof ReviewsRoute
   '/settings': typeof SettingsRoute
   '/wallet': typeof WalletRoute
+  '/admin/businesses': typeof AdminBusinessesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/disputes': typeof AdminDisputesRoute
+  '/admin/payouts': typeof AdminPayoutsRoute
+  '/admin/placements': typeof AdminPlacementsRoute
+  '/admin/users': typeof AdminUsersRoute
   '/business/dashboard': typeof BusinessDashboardRoute
   '/graduate/applications': typeof GraduateApplicationsRoute
   '/graduate/dashboard': typeof GraduateDashboardRoute
@@ -245,6 +299,7 @@ export interface FileRoutesById {
   '/opportunities/': typeof OpportunitiesIndexRoute
   '/business/opportunities/new': typeof BusinessOpportunitiesNewRoute
   '/business/opportunities/': typeof BusinessOpportunitiesIndexRoute
+  '/business/opportunities/$opportunityId/applicants': typeof BusinessOpportunitiesOpportunityIdApplicantsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -258,7 +313,12 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/settings'
     | '/wallet'
+    | '/admin/businesses'
     | '/admin/dashboard'
+    | '/admin/disputes'
+    | '/admin/payouts'
+    | '/admin/placements'
+    | '/admin/users'
     | '/business/dashboard'
     | '/graduate/applications'
     | '/graduate/dashboard'
@@ -274,6 +334,7 @@ export interface FileRouteTypes {
     | '/opportunities/'
     | '/business/opportunities/new'
     | '/business/opportunities/'
+    | '/business/opportunities/$opportunityId/applicants'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -285,7 +346,12 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/settings'
     | '/wallet'
+    | '/admin/businesses'
     | '/admin/dashboard'
+    | '/admin/disputes'
+    | '/admin/payouts'
+    | '/admin/placements'
+    | '/admin/users'
     | '/business/dashboard'
     | '/graduate/applications'
     | '/graduate/dashboard'
@@ -301,6 +367,7 @@ export interface FileRouteTypes {
     | '/opportunities'
     | '/business/opportunities/new'
     | '/business/opportunities'
+    | '/business/opportunities/$opportunityId/applicants'
   id:
     | '__root__'
     | '/'
@@ -312,7 +379,12 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/settings'
     | '/wallet'
+    | '/admin/businesses'
     | '/admin/dashboard'
+    | '/admin/disputes'
+    | '/admin/payouts'
+    | '/admin/placements'
+    | '/admin/users'
     | '/business/dashboard'
     | '/graduate/applications'
     | '/graduate/dashboard'
@@ -328,6 +400,7 @@ export interface FileRouteTypes {
     | '/opportunities/'
     | '/business/opportunities/new'
     | '/business/opportunities/'
+    | '/business/opportunities/$opportunityId/applicants'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -340,7 +413,12 @@ export interface RootRouteChildren {
   ReviewsRoute: typeof ReviewsRoute
   SettingsRoute: typeof SettingsRoute
   WalletRoute: typeof WalletRoute
+  AdminBusinessesRoute: typeof AdminBusinessesRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
+  AdminDisputesRoute: typeof AdminDisputesRoute
+  AdminPayoutsRoute: typeof AdminPayoutsRoute
+  AdminPlacementsRoute: typeof AdminPlacementsRoute
+  AdminUsersRoute: typeof AdminUsersRoute
   BusinessDashboardRoute: typeof BusinessDashboardRoute
   GraduateApplicationsRoute: typeof GraduateApplicationsRoute
   GraduateDashboardRoute: typeof GraduateDashboardRoute
@@ -355,6 +433,7 @@ export interface RootRouteChildren {
   OpportunitiesIndexRoute: typeof OpportunitiesIndexRoute
   BusinessOpportunitiesNewRoute: typeof BusinessOpportunitiesNewRoute
   BusinessOpportunitiesIndexRoute: typeof BusinessOpportunitiesIndexRoute
+  BusinessOpportunitiesOpportunityIdApplicantsRoute: typeof BusinessOpportunitiesOpportunityIdApplicantsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -513,11 +592,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BusinessDashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/users': {
+      id: '/admin/users'
+      path: '/admin/users'
+      fullPath: '/admin/users'
+      preLoaderRoute: typeof AdminUsersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/placements': {
+      id: '/admin/placements'
+      path: '/admin/placements'
+      fullPath: '/admin/placements'
+      preLoaderRoute: typeof AdminPlacementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/payouts': {
+      id: '/admin/payouts'
+      path: '/admin/payouts'
+      fullPath: '/admin/payouts'
+      preLoaderRoute: typeof AdminPayoutsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/disputes': {
+      id: '/admin/disputes'
+      path: '/admin/disputes'
+      fullPath: '/admin/disputes'
+      preLoaderRoute: typeof AdminDisputesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/dashboard': {
       id: '/admin/dashboard'
       path: '/admin/dashboard'
       fullPath: '/admin/dashboard'
       preLoaderRoute: typeof AdminDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/businesses': {
+      id: '/admin/businesses'
+      path: '/admin/businesses'
+      fullPath: '/admin/businesses'
+      preLoaderRoute: typeof AdminBusinessesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/business/opportunities/': {
@@ -532,6 +646,13 @@ declare module '@tanstack/react-router' {
       path: '/business/opportunities/new'
       fullPath: '/business/opportunities/new'
       preLoaderRoute: typeof BusinessOpportunitiesNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/business/opportunities/$opportunityId/applicants': {
+      id: '/business/opportunities/$opportunityId/applicants'
+      path: '/business/opportunities/$opportunityId/applicants'
+      fullPath: '/business/opportunities/$opportunityId/applicants'
+      preLoaderRoute: typeof BusinessOpportunitiesOpportunityIdApplicantsRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -558,7 +679,12 @@ const rootRouteChildren: RootRouteChildren = {
   ReviewsRoute: ReviewsRoute,
   SettingsRoute: SettingsRoute,
   WalletRoute: WalletRoute,
+  AdminBusinessesRoute: AdminBusinessesRoute,
   AdminDashboardRoute: AdminDashboardRoute,
+  AdminDisputesRoute: AdminDisputesRoute,
+  AdminPayoutsRoute: AdminPayoutsRoute,
+  AdminPlacementsRoute: AdminPlacementsRoute,
+  AdminUsersRoute: AdminUsersRoute,
   BusinessDashboardRoute: BusinessDashboardRoute,
   GraduateApplicationsRoute: GraduateApplicationsRoute,
   GraduateDashboardRoute: GraduateDashboardRoute,
@@ -573,6 +699,8 @@ const rootRouteChildren: RootRouteChildren = {
   OpportunitiesIndexRoute: OpportunitiesIndexRoute,
   BusinessOpportunitiesNewRoute: BusinessOpportunitiesNewRoute,
   BusinessOpportunitiesIndexRoute: BusinessOpportunitiesIndexRoute,
+  BusinessOpportunitiesOpportunityIdApplicantsRoute:
+    BusinessOpportunitiesOpportunityIdApplicantsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

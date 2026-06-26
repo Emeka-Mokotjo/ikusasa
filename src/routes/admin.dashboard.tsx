@@ -84,8 +84,8 @@ function AdminDashboard() {
           </div>
           <p className="mt-1 text-sm text-background/70">Reports awaiting review.</p>
           <p className="mt-6 font-display text-5xl font-semibold">{stats?.flaggedItems ?? 0}</p>
-          <Button size="sm" variant="secondary" className="mt-6 w-full">
-            Open queue
+          <Button asChild size="sm" variant="secondary" className="mt-6 w-full">
+            <Link to="/admin/disputes">Open queue</Link>
           </Button>
         </article>
       </div>

@@ -31,6 +31,10 @@ import { Route as MessagesConversationIdRouteImport } from './routes/messages.$c
 import { Route as GraduateDashboardRouteImport } from './routes/graduate.dashboard'
 import { Route as GraduateApplicationsRouteImport } from './routes/graduate.applications'
 import { Route as BusinessDashboardRouteImport } from './routes/business.dashboard'
+import { Route as AdminUsersRouteImport } from './routes/admin.users'
+import { Route as AdminPlacementsRouteImport } from './routes/admin.placements'
+import { Route as AdminPayoutsRouteImport } from './routes/admin.payouts'
+import { Route as AdminDisputesRouteImport } from './routes/admin.disputes'
 import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
 import { Route as AdminBusinessesRouteImport } from './routes/admin.businesses'
 import { Route as BusinessOpportunitiesIndexRouteImport } from './routes/business.opportunities.index'
@@ -148,6 +152,26 @@ const BusinessDashboardRoute = BusinessDashboardRouteImport.update({
   path: '/business/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminUsersRoute = AdminUsersRouteImport.update({
+  id: '/admin/users',
+  path: '/admin/users',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminPlacementsRoute = AdminPlacementsRouteImport.update({
+  id: '/admin/placements',
+  path: '/admin/placements',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminPayoutsRoute = AdminPayoutsRouteImport.update({
+  id: '/admin/payouts',
+  path: '/admin/payouts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminDisputesRoute = AdminDisputesRouteImport.update({
+  id: '/admin/disputes',
+  path: '/admin/disputes',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminDashboardRoute = AdminDashboardRouteImport.update({
   id: '/admin/dashboard',
   path: '/admin/dashboard',
@@ -189,6 +213,10 @@ export interface FileRoutesByFullPath {
   '/wallet': typeof WalletRoute
   '/admin/businesses': typeof AdminBusinessesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/disputes': typeof AdminDisputesRoute
+  '/admin/payouts': typeof AdminPayoutsRoute
+  '/admin/placements': typeof AdminPlacementsRoute
+  '/admin/users': typeof AdminUsersRoute
   '/business/dashboard': typeof BusinessDashboardRoute
   '/graduate/applications': typeof GraduateApplicationsRoute
   '/graduate/dashboard': typeof GraduateDashboardRoute
@@ -218,6 +246,10 @@ export interface FileRoutesByTo {
   '/wallet': typeof WalletRoute
   '/admin/businesses': typeof AdminBusinessesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/disputes': typeof AdminDisputesRoute
+  '/admin/payouts': typeof AdminPayoutsRoute
+  '/admin/placements': typeof AdminPlacementsRoute
+  '/admin/users': typeof AdminUsersRoute
   '/business/dashboard': typeof BusinessDashboardRoute
   '/graduate/applications': typeof GraduateApplicationsRoute
   '/graduate/dashboard': typeof GraduateDashboardRoute
@@ -248,6 +280,10 @@ export interface FileRoutesById {
   '/wallet': typeof WalletRoute
   '/admin/businesses': typeof AdminBusinessesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/disputes': typeof AdminDisputesRoute
+  '/admin/payouts': typeof AdminPayoutsRoute
+  '/admin/placements': typeof AdminPlacementsRoute
+  '/admin/users': typeof AdminUsersRoute
   '/business/dashboard': typeof BusinessDashboardRoute
   '/graduate/applications': typeof GraduateApplicationsRoute
   '/graduate/dashboard': typeof GraduateDashboardRoute
@@ -279,6 +315,10 @@ export interface FileRouteTypes {
     | '/wallet'
     | '/admin/businesses'
     | '/admin/dashboard'
+    | '/admin/disputes'
+    | '/admin/payouts'
+    | '/admin/placements'
+    | '/admin/users'
     | '/business/dashboard'
     | '/graduate/applications'
     | '/graduate/dashboard'
@@ -308,6 +348,10 @@ export interface FileRouteTypes {
     | '/wallet'
     | '/admin/businesses'
     | '/admin/dashboard'
+    | '/admin/disputes'
+    | '/admin/payouts'
+    | '/admin/placements'
+    | '/admin/users'
     | '/business/dashboard'
     | '/graduate/applications'
     | '/graduate/dashboard'
@@ -337,6 +381,10 @@ export interface FileRouteTypes {
     | '/wallet'
     | '/admin/businesses'
     | '/admin/dashboard'
+    | '/admin/disputes'
+    | '/admin/payouts'
+    | '/admin/placements'
+    | '/admin/users'
     | '/business/dashboard'
     | '/graduate/applications'
     | '/graduate/dashboard'
@@ -367,6 +415,10 @@ export interface RootRouteChildren {
   WalletRoute: typeof WalletRoute
   AdminBusinessesRoute: typeof AdminBusinessesRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
+  AdminDisputesRoute: typeof AdminDisputesRoute
+  AdminPayoutsRoute: typeof AdminPayoutsRoute
+  AdminPlacementsRoute: typeof AdminPlacementsRoute
+  AdminUsersRoute: typeof AdminUsersRoute
   BusinessDashboardRoute: typeof BusinessDashboardRoute
   GraduateApplicationsRoute: typeof GraduateApplicationsRoute
   GraduateDashboardRoute: typeof GraduateDashboardRoute
@@ -540,6 +592,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BusinessDashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/users': {
+      id: '/admin/users'
+      path: '/admin/users'
+      fullPath: '/admin/users'
+      preLoaderRoute: typeof AdminUsersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/placements': {
+      id: '/admin/placements'
+      path: '/admin/placements'
+      fullPath: '/admin/placements'
+      preLoaderRoute: typeof AdminPlacementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/payouts': {
+      id: '/admin/payouts'
+      path: '/admin/payouts'
+      fullPath: '/admin/payouts'
+      preLoaderRoute: typeof AdminPayoutsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/disputes': {
+      id: '/admin/disputes'
+      path: '/admin/disputes'
+      fullPath: '/admin/disputes'
+      preLoaderRoute: typeof AdminDisputesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/dashboard': {
       id: '/admin/dashboard'
       path: '/admin/dashboard'
@@ -601,6 +681,10 @@ const rootRouteChildren: RootRouteChildren = {
   WalletRoute: WalletRoute,
   AdminBusinessesRoute: AdminBusinessesRoute,
   AdminDashboardRoute: AdminDashboardRoute,
+  AdminDisputesRoute: AdminDisputesRoute,
+  AdminPayoutsRoute: AdminPayoutsRoute,
+  AdminPlacementsRoute: AdminPlacementsRoute,
+  AdminUsersRoute: AdminUsersRoute,
   BusinessDashboardRoute: BusinessDashboardRoute,
   GraduateApplicationsRoute: GraduateApplicationsRoute,
   GraduateDashboardRoute: GraduateDashboardRoute,

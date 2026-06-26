@@ -79,6 +79,14 @@ function BusinessOpportunitiesPage() {
                       <Eye className="mr-1 h-3.5 w-3.5" /> View
                     </Link>
                   </Button>
+                  <Button size="sm" asChild>
+                    <Link
+                      to="/business/opportunities/$opportunityId/applicants"
+                      params={{ opportunityId: o.id }}
+                    >
+                      <Users className="mr-1 h-3.5 w-3.5" /> Applicants
+                    </Link>
+                  </Button>
                 </div>
               </div>
             </article>

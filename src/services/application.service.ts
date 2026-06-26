@@ -1,6 +1,7 @@
 import { delay } from "./_delay";
 import { mockApplications } from "@/mock-data/applications";
-import type { Application } from "@/types";
+import type { Application, ApplicationStatus } from "@/types";
+
 
 export const applicationService = {
   async byApplicantId(applicantId: string): Promise<Application[]> {

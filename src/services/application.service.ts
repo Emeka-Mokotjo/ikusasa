@@ -35,4 +35,9 @@ export const applicationService = {
       submittedAt: new Date().toISOString(),
     });
   },
+  async updateStatus(applicationId: string, status: ApplicationStatus): Promise<void> {
+    const a = mockApplications.find((x) => x.id === applicationId);
+    if (a) a.status = status;
+    return delay(undefined, 200);
+  },
 };

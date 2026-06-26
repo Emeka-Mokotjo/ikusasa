@@ -34,6 +34,7 @@ import { Route as BusinessDashboardRouteImport } from './routes/business.dashboa
 import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
 import { Route as BusinessOpportunitiesIndexRouteImport } from './routes/business.opportunities.index'
 import { Route as BusinessOpportunitiesNewRouteImport } from './routes/business.opportunities.new'
+import { Route as BusinessOpportunitiesOpportunityIdApplicantsRouteImport } from './routes/business.opportunities.$opportunityId.applicants'
 
 const WalletRoute = WalletRouteImport.update({
   id: '/wallet',
@@ -163,6 +164,12 @@ const BusinessOpportunitiesNewRoute =
     path: '/business/opportunities/new',
     getParentRoute: () => rootRouteImport,
   } as any)
+const BusinessOpportunitiesOpportunityIdApplicantsRoute =
+  BusinessOpportunitiesOpportunityIdApplicantsRouteImport.update({
+    id: '/business/opportunities/$opportunityId/applicants',
+    path: '/business/opportunities/$opportunityId/applicants',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -190,6 +197,7 @@ export interface FileRoutesByFullPath {
   '/opportunities/': typeof OpportunitiesIndexRoute
   '/business/opportunities/new': typeof BusinessOpportunitiesNewRoute
   '/business/opportunities/': typeof BusinessOpportunitiesIndexRoute
+  '/business/opportunities/$opportunityId/applicants': typeof BusinessOpportunitiesOpportunityIdApplicantsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -217,6 +225,7 @@ export interface FileRoutesByTo {
   '/opportunities': typeof OpportunitiesIndexRoute
   '/business/opportunities/new': typeof BusinessOpportunitiesNewRoute
   '/business/opportunities': typeof BusinessOpportunitiesIndexRoute
+  '/business/opportunities/$opportunityId/applicants': typeof BusinessOpportunitiesOpportunityIdApplicantsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -245,6 +254,7 @@ export interface FileRoutesById {
   '/opportunities/': typeof OpportunitiesIndexRoute
   '/business/opportunities/new': typeof BusinessOpportunitiesNewRoute
   '/business/opportunities/': typeof BusinessOpportunitiesIndexRoute
+  '/business/opportunities/$opportunityId/applicants': typeof BusinessOpportunitiesOpportunityIdApplicantsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -274,6 +284,7 @@ export interface FileRouteTypes {
     | '/opportunities/'
     | '/business/opportunities/new'
     | '/business/opportunities/'
+    | '/business/opportunities/$opportunityId/applicants'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -301,6 +312,7 @@ export interface FileRouteTypes {
     | '/opportunities'
     | '/business/opportunities/new'
     | '/business/opportunities'
+    | '/business/opportunities/$opportunityId/applicants'
   id:
     | '__root__'
     | '/'
@@ -328,6 +340,7 @@ export interface FileRouteTypes {
     | '/opportunities/'
     | '/business/opportunities/new'
     | '/business/opportunities/'
+    | '/business/opportunities/$opportunityId/applicants'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -355,6 +368,7 @@ export interface RootRouteChildren {
   OpportunitiesIndexRoute: typeof OpportunitiesIndexRoute
   BusinessOpportunitiesNewRoute: typeof BusinessOpportunitiesNewRoute
   BusinessOpportunitiesIndexRoute: typeof BusinessOpportunitiesIndexRoute
+  BusinessOpportunitiesOpportunityIdApplicantsRoute: typeof BusinessOpportunitiesOpportunityIdApplicantsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -534,6 +548,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BusinessOpportunitiesNewRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/business/opportunities/$opportunityId/applicants': {
+      id: '/business/opportunities/$opportunityId/applicants'
+      path: '/business/opportunities/$opportunityId/applicants'
+      fullPath: '/business/opportunities/$opportunityId/applicants'
+      preLoaderRoute: typeof BusinessOpportunitiesOpportunityIdApplicantsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -573,6 +594,8 @@ const rootRouteChildren: RootRouteChildren = {
   OpportunitiesIndexRoute: OpportunitiesIndexRoute,
   BusinessOpportunitiesNewRoute: BusinessOpportunitiesNewRoute,
   BusinessOpportunitiesIndexRoute: BusinessOpportunitiesIndexRoute,
+  BusinessOpportunitiesOpportunityIdApplicantsRoute:
+    BusinessOpportunitiesOpportunityIdApplicantsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

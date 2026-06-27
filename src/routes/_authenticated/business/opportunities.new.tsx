@@ -19,7 +19,7 @@ import { TagInput } from "@/components/forms/TagInput";
 import { OPPORTUNITY_TYPE_LABEL, SA_CITIES, SKILLS_CATALOG } from "@/constants";
 import type { CompensationType, OpportunityType } from "@/types";
 
-export const Route = createFileRoute("/business/opportunities/new")({
+export const Route = createFileRoute("/_authenticated/business/opportunities/new")({
   head: () => ({ meta: [{ title: "Post a role — Ikusasa" }] }),
   component: NewOpportunityPage,
 });

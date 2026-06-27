@@ -8,38 +8,38 @@ import { FileDropzone } from "@/components/forms/FileDropzone";
 import { useOnboardingStore, useAuthStore } from "@/store";
 import { SA_UNIVERSITIES, SA_CITIES, SKILLS_CATALOG } from "@/constants";
 
-export const Route = createFileRoute("/onboarding/student")({
+export const Route = createFileRoute("/_authenticated/onboarding/graduate")({
   head: () => ({
     meta: [
-      { title: "Set up your student profile — Ikusasa" },
-      { name: "description", content: "Tell us about you so we can match you with the right work." },
+      { title: "Set up your graduate profile — Ikusasa" },
+      { name: "description", content: "Build the profile that lands your next role." },
     ],
   }),
-  component: StudentOnboarding,
+  component: GraduateOnboarding,
 });
 
 const STEPS = ["About you", "Skills", "Portfolio", "CV", "Review"];
 
-function StudentOnboarding() {
+function GraduateOnboarding() {
   const navigate = useNavigate();
-  const { step, next, back, student, setStudent, reset } = useOnboardingStore();
+  const { step, next, back, graduate, setGraduate, reset } = useOnboardingStore();
   const updateUser = useAuthStore((s) => s.updateUser);
   const [submitting, setSubmitting] = useState(false);
 
   const canNext = (() => {
     switch (step) {
       case 1:
-        return Boolean(student.fullName && student.university && student.degree && student.graduationYear);
+        return Boolean(
+          graduate.fullName &&
+            graduate.university &&
+            graduate.degree &&
+            graduate.graduationYear &&
+            graduate.yearsSinceGraduation !== undefined
+        );
       case 2:
-        return (student.skills?.length ?? 0) >= 1;
-      case 3:
-        return true;
-      case 4:
-        return true;
-      case 5:
-        return true;
+        return (graduate.skills?.length ?? 0) >= 1;
       default:
-        return false;
+        return true;
     }
   })();
 
@@ -52,7 +52,7 @@ function StudentOnboarding() {
     await new Promise((r) => setTimeout(r, 500));
     updateUser({ onboardingComplete: true });
     reset();
-    navigate({ to: "/student/dashboard" });
+    navigate({ to: "/graduate/dashboard" });
   }
 
   return (
@@ -69,9 +69,7 @@ function StudentOnboarding() {
                 : "Review and finish"
       }
       subtitle={
-        step === 5
-          ? "Everything looks good? You can edit any of this from your profile later."
-          : "This helps us match you to opportunities you'll actually love."
+        step === 5 ? "Looks good? You can edit any of this later." : "A complete profile gets ~3× more invites."
       }
       steps={STEPS}
       current={step}
@@ -88,17 +86,17 @@ function StudentOnboarding() {
             <Label htmlFor="fullName">Full name</Label>
             <Input
               id="fullName"
-              value={student.fullName ?? ""}
-              onChange={(e) => setStudent({ fullName: e.target.value })}
-              placeholder="Amahle Ndlovu"
+              value={graduate.fullName ?? ""}
+              onChange={(e) => setGraduate({ fullName: e.target.value })}
+              placeholder="Nomsa Khumalo"
             />
           </div>
           <div className="space-y-2">
             <Label htmlFor="university">University</Label>
             <select
               id="university"
-              value={student.university ?? ""}
-              onChange={(e) => setStudent({ university: e.target.value })}
+              value={graduate.university ?? ""}
+              onChange={(e) => setGraduate({ university: e.target.value })}
               className="flex h-10 w-full rounded-md border border-input bg-background px-3 text-sm"
             >
               <option value="">Select…</option>
@@ -113,9 +111,9 @@ function StudentOnboarding() {
             <Label htmlFor="degree">Degree</Label>
             <Input
               id="degree"
-              value={student.degree ?? ""}
-              onChange={(e) => setStudent({ degree: e.target.value })}
-              placeholder="BSc Computer Science"
+              value={graduate.degree ?? ""}
+              onChange={(e) => setGraduate({ degree: e.target.value })}
+              placeholder="BEng Industrial"
             />
           </div>
           <div className="space-y-2">
@@ -123,18 +121,38 @@ function StudentOnboarding() {
             <Input
               id="grad"
               type="number"
-              min={2024}
-              max={2032}
-              value={student.graduationYear ?? ""}
-              onChange={(e) => setStudent({ graduationYear: Number(e.target.value) })}
+              min={2015}
+              max={2025}
+              value={graduate.graduationYear ?? ""}
+              onChange={(e) => setGraduate({ graduationYear: Number(e.target.value) })}
             />
           </div>
           <div className="space-y-2">
+            <Label htmlFor="years">Years since graduating</Label>
+            <Input
+              id="years"
+              type="number"
+              min={0}
+              max={10}
+              value={graduate.yearsSinceGraduation ?? ""}
+              onChange={(e) => setGraduate({ yearsSinceGraduation: Number(e.target.value) })}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="current">Current role (optional)</Label>
+            <Input
+              id="current"
+              value={graduate.currentRole ?? ""}
+              onChange={(e) => setGraduate({ currentRole: e.target.value })}
+              placeholder="Junior Data Analyst"
+            />
+          </div>
+          <div className="space-y-2 sm:col-span-2">
             <Label htmlFor="city">City</Label>
             <select
               id="city"
-              value={student.city ?? ""}
-              onChange={(e) => setStudent({ city: e.target.value })}
+              value={graduate.city ?? ""}
+              onChange={(e) => setGraduate({ city: e.target.value })}
               className="flex h-10 w-full rounded-md border border-input bg-background px-3 text-sm"
             >
               <option value="">Select…</option>
@@ -151,14 +169,10 @@ function StudentOnboarding() {
       {step === 2 && (
         <div className="space-y-2">
           <Label>Skills</Label>
-          <p className="text-xs text-muted-foreground">
-            Add at least one. Tap suggestions or type your own.
-          </p>
           <TagInput
-            value={student.skills ?? []}
-            onChange={(skills) => setStudent({ skills })}
+            value={graduate.skills ?? []}
+            onChange={(skills) => setGraduate({ skills })}
             suggestions={SKILLS_CATALOG}
-            placeholder="e.g. React, Figma, Copywriting"
           />
         </div>
       )}
@@ -169,27 +183,24 @@ function StudentOnboarding() {
             <Label htmlFor="linkedin">LinkedIn</Label>
             <Input
               id="linkedin"
-              value={student.linkedin ?? ""}
-              onChange={(e) => setStudent({ linkedin: e.target.value })}
-              placeholder="https://linkedin.com/in/you"
+              value={graduate.linkedin ?? ""}
+              onChange={(e) => setGraduate({ linkedin: e.target.value })}
             />
           </div>
           <div className="space-y-2">
             <Label htmlFor="github">GitHub</Label>
             <Input
               id="github"
-              value={student.github ?? ""}
-              onChange={(e) => setStudent({ github: e.target.value })}
-              placeholder="https://github.com/you"
+              value={graduate.github ?? ""}
+              onChange={(e) => setGraduate({ github: e.target.value })}
             />
           </div>
           <div className="space-y-2">
             <Label htmlFor="website">Website</Label>
             <Input
               id="website"
-              value={student.website ?? ""}
-              onChange={(e) => setStudent({ website: e.target.value })}
-              placeholder="https://yourname.co.za"
+              value={graduate.website ?? ""}
+              onChange={(e) => setGraduate({ website: e.target.value })}
             />
           </div>
         </div>
@@ -197,40 +208,39 @@ function StudentOnboarding() {
 
       {step === 4 && (
         <FileDropzone
-          value={student.cvFileName}
-          onChange={(name) => setStudent({ cvFileName: name as string })}
-          hint="PDF or DOC up to 5MB — businesses see this when you apply"
+          value={graduate.cvFileName}
+          onChange={(name) => setGraduate({ cvFileName: name as string })}
+          hint="PDF or DOC up to 5MB"
         />
       )}
 
-      {step === 5 && <ReviewSection data={student} />}
+      {step === 5 && (
+        <dl className="divide-y divide-border rounded-2xl border border-border bg-canvas">
+          {(
+            [
+              ["Name", graduate.fullName],
+              ["University", graduate.university],
+              ["Degree", graduate.degree],
+              ["Graduation year", graduate.graduationYear?.toString()],
+              ["Years since", graduate.yearsSinceGraduation?.toString()],
+              ["Current role", graduate.currentRole],
+              ["City", graduate.city],
+              ["Skills", graduate.skills?.join(", ")],
+              ["LinkedIn", graduate.linkedin],
+              ["GitHub", graduate.github],
+              ["Website", graduate.website],
+              ["CV", graduate.cvFileName],
+            ] satisfies Array<[string, string | undefined]>
+          ).map(([label, value]) => (
+            <div key={label} className="grid grid-cols-[140px_1fr] gap-4 px-4 py-3 sm:px-5">
+              <dt className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                {label}
+              </dt>
+              <dd className="text-sm text-foreground">{value || "—"}</dd>
+            </div>
+          ))}
+        </dl>
+      )}
     </OnboardingLayout>
-  );
-}
-
-function ReviewSection({ data }: { data: ReturnType<typeof useOnboardingStore.getState>["student"] }) {
-  const rows: Array<[string, string | undefined]> = [
-    ["Name", data.fullName],
-    ["University", data.university],
-    ["Degree", data.degree],
-    ["Graduation year", data.graduationYear?.toString()],
-    ["City", data.city],
-    ["Skills", data.skills?.join(", ")],
-    ["LinkedIn", data.linkedin],
-    ["GitHub", data.github],
-    ["Website", data.website],
-    ["CV", data.cvFileName],
-  ];
-  return (
-    <dl className="divide-y divide-border rounded-2xl border border-border bg-canvas">
-      {rows.map(([label, value]) => (
-        <div key={label} className="grid grid-cols-[140px_1fr] gap-4 px-4 py-3 sm:px-5">
-          <dt className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-            {label}
-          </dt>
-          <dd className="text-sm text-foreground">{value || "—"}</dd>
-        </div>
-      ))}
-    </dl>
   );
 }

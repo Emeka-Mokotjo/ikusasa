@@ -12,7 +12,7 @@ import { applicationService, notificationService, opportunityService } from "@/s
 import { useAuthStore } from "@/store";
 import { formatRelativeDate } from "@/lib/format";
 
-export const Route = createFileRoute("/student/dashboard")({
+export const Route = createFileRoute("/_authenticated/student/dashboard")({
   head: () => ({ meta: [{ title: "Student dashboard — Ikusasa" }] }),
   component: () => <TalentDashboard role="Student" />,
 });

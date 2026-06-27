@@ -9,7 +9,7 @@ import { EmptyState } from "@/components/common/EmptyState";
 import { Skeleton } from "@/components/ui/skeleton";
 import { opportunityService, type OpportunityFilters } from "@/services/opportunity.service";
 
-export const Route = createFileRoute("/opportunities/")({
+export const Route = createFileRoute("/_authenticated/opportunities/")({
   head: () => ({
     meta: [
       { title: "Browse opportunities — Ikusasa" },

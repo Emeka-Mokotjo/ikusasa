@@ -23,7 +23,7 @@ import { useAuthStore } from "@/store";
 import { formatRelativeDate, formatZAR, initials } from "@/lib/format";
 import { OPPORTUNITY_TYPE_LABEL } from "@/constants";
 
-export const Route = createFileRoute("/business/dashboard")({
+export const Route = createFileRoute("/_authenticated/business/dashboard")({
   head: () => ({ meta: [{ title: "Business dashboard — Ikusasa" }] }),
   component: BusinessDashboard,
 });

@@ -10,7 +10,7 @@ import { applicationService } from "@/services";
 import { useAuthStore } from "@/store";
 import { formatDate } from "@/lib/format";
 
-export const Route = createFileRoute("/graduate/applications")({
+export const Route = createFileRoute("/_authenticated/graduate/applications")({
   head: () => ({ meta: [{ title: "My applications — Ikusasa" }] }),
   component: GraduateApplicationsPage,
 });

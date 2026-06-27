@@ -23,7 +23,7 @@ import { formatZAR, formatRelativeDate } from "@/lib/format";
 import { cn } from "@/lib/utils";
 import type { WalletTransaction } from "@/types";
 
-export const Route = createFileRoute("/wallet")({
+export const Route = createFileRoute("/_authenticated/wallet")({
   head: () => ({ meta: [{ title: "Wallet — Ikusasa" }] }),
   component: WalletPage,
 });

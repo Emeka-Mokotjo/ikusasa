@@ -21,7 +21,7 @@ import { EmptyState } from "@/components/common/EmptyState";
 import { adminService } from "@/services";
 import { formatDate, initials } from "@/lib/format";
 
-export const Route = createFileRoute("/admin/businesses")({
+export const Route = createFileRoute("/_authenticated/admin/businesses")({
   head: () => ({ meta: [{ title: "Businesses — Admin · Ikusasa" }] }),
   component: AdminBusinessesPage,
 });

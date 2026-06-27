@@ -12,7 +12,7 @@ import { useAuthStore } from "@/store";
 import { OPPORTUNITY_TYPE_LABEL } from "@/constants";
 import { formatRelativeDate, formatZAR } from "@/lib/format";
 
-export const Route = createFileRoute("/business/opportunities/")({
+export const Route = createFileRoute("/_authenticated/business/opportunities/")({
   head: () => ({ meta: [{ title: "Your opportunities — Ikusasa" }] }),
   component: BusinessOpportunitiesPage,
 });

@@ -16,7 +16,7 @@ import { ROLE_LABEL } from "@/constants";
 import type { ApplicationStatus } from "@/types";
 import { useState } from "react";
 
-export const Route = createFileRoute("/business/opportunities/$opportunityId/applicants")({
+export const Route = createFileRoute("/_authenticated/business/opportunities/$opportunityId/applicants")({
   head: () => ({ meta: [{ title: "Applicants — Ikusasa" }] }),
   component: ApplicantManagementPage,
 });

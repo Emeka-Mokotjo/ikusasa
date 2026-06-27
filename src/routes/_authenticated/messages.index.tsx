@@ -12,7 +12,7 @@ import { initials, formatRelativeDate } from "@/lib/format";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/messages/")({
+export const Route = createFileRoute("/_authenticated/messages/")({
   head: () => ({ meta: [{ title: "Messages — Ikusasa" }] }),
   component: MessagesIndex,
 });

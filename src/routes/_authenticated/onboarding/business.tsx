@@ -8,7 +8,7 @@ import { FileDropzone } from "@/components/forms/FileDropzone";
 import { useOnboardingStore, useAuthStore } from "@/store";
 import { INDUSTRIES, SA_CITIES } from "@/constants";
 
-export const Route = createFileRoute("/onboarding/business")({
+export const Route = createFileRoute("/_authenticated/onboarding/business")({
   head: () => ({
     meta: [
       { title: "Set up your business — Ikusasa" },

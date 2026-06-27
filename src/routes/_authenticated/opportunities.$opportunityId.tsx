@@ -23,7 +23,7 @@ import { formatDate, formatRelativeDate, formatZAR, initials } from "@/lib/forma
 import { OPPORTUNITY_TYPE_LABEL } from "@/constants";
 import { useAuthStore } from "@/store";
 
-export const Route = createFileRoute("/opportunities/$opportunityId")({
+export const Route = createFileRoute("/_authenticated/opportunities/$opportunityId")({
   head: () => ({
     meta: [{ title: "Opportunity — Ikusasa" }],
   }),

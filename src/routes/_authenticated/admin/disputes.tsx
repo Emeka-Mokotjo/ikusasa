@@ -15,7 +15,7 @@ import { ROLE_LABEL } from "@/constants";
 import { cn } from "@/lib/utils";
 import type { DisputeStatus } from "@/types";
 
-export const Route = createFileRoute("/admin/disputes")({
+export const Route = createFileRoute("/_authenticated/admin/disputes")({
   head: () => ({ meta: [{ title: "Disputes — Admin · Ikusasa" }] }),
   component: AdminDisputesPage,
 });

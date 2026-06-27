@@ -18,7 +18,7 @@ import { adminService } from "@/services";
 import { formatDate, formatZAR } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/admin/payouts")({
+export const Route = createFileRoute("/_authenticated/admin/payouts")({
   head: () => ({ meta: [{ title: "Payouts — Admin · Ikusasa" }] }),
   component: AdminPayoutsPage,
 });

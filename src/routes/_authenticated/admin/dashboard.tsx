@@ -11,7 +11,7 @@ import { adminService } from "@/services";
 import { initials, formatRelativeDate } from "@/lib/format";
 import { OpportunityStatusPill } from "@/components/common/StatusPill";
 
-export const Route = createFileRoute("/admin/dashboard")({
+export const Route = createFileRoute("/_authenticated/admin/dashboard")({
   head: () => ({ meta: [{ title: "Admin — Ikusasa" }] }),
   component: AdminDashboard,
 });

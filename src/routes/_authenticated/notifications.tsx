@@ -11,7 +11,7 @@ import { formatRelativeDate } from "@/lib/format";
 import { cn } from "@/lib/utils";
 import type { NotificationKind } from "@/types";
 
-export const Route = createFileRoute("/notifications")({
+export const Route = createFileRoute("/_authenticated/notifications")({
   head: () => ({ meta: [{ title: "Notifications — Ikusasa" }] }),
   component: NotificationsPage,
 });

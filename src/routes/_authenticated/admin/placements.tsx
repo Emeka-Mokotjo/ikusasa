@@ -19,7 +19,7 @@ import { adminService } from "@/services";
 import { ROLE_LABEL } from "@/constants";
 import { formatDate, formatZAR, initials } from "@/lib/format";
 
-export const Route = createFileRoute("/admin/placements")({
+export const Route = createFileRoute("/_authenticated/admin/placements")({
   head: () => ({ meta: [{ title: "Placements — Admin · Ikusasa" }] }),
   component: AdminPlacementsPage,
 });

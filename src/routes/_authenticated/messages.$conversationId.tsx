@@ -12,7 +12,7 @@ import { useAuthStore } from "@/store";
 import { initials, formatRelativeDate } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/messages/$conversationId")({
+export const Route = createFileRoute("/_authenticated/messages/$conversationId")({
   head: () => ({ meta: [{ title: "Conversation — Ikusasa" }] }),
   component: ConversationPage,
 });

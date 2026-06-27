@@ -18,7 +18,7 @@ import { initials, formatRelativeDate } from "@/lib/format";
 import { Plus, Star } from "lucide-react";
 import { toast } from "sonner";
 
-export const Route = createFileRoute("/reviews")({
+export const Route = createFileRoute("/_authenticated/reviews")({
   component: ReviewsPage,
 });
 

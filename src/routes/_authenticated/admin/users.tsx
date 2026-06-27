@@ -22,7 +22,7 @@ import { ROLE_LABEL } from "@/constants";
 import { formatDate, initials } from "@/lib/format";
 import type { UserRole } from "@/types";
 
-export const Route = createFileRoute("/admin/users")({
+export const Route = createFileRoute("/_authenticated/admin/users")({
   head: () => ({ meta: [{ title: "Users — Admin · Ikusasa" }] }),
   component: AdminUsersPage,
 });

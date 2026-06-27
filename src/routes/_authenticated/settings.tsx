@@ -17,7 +17,7 @@ import { Bell, Lock, Palette, Trash2, User as UserIcon } from "lucide-react";
 import { toast } from "sonner";
 import type { Business, Graduate, Student } from "@/types";
 
-export const Route = createFileRoute("/settings")({
+export const Route = createFileRoute("/_authenticated/settings")({
   component: SettingsPage,
 });
 

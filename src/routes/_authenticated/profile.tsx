@@ -13,7 +13,7 @@ import { initials, formatRelativeDate } from "@/lib/format";
 import { Briefcase, ExternalLink, MapPin, Pencil, ShieldCheck, Star, User as UserIcon } from "lucide-react";
 import type { Business, Graduate, Student } from "@/types";
 
-export const Route = createFileRoute("/profile")({
+export const Route = createFileRoute("/_authenticated/profile")({
   component: ProfilePage,
 });
 

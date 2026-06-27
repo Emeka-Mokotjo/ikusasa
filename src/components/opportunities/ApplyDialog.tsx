@@ -32,10 +32,15 @@ export function ApplyDialog({
   const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = async () => {
+    if (!user || (user.role !== "student" && user.role !== "graduate")) {
+      toast.error("Only students and graduates can apply to opportunities.");
+      return;
+    }
     if (coverMessage.trim().length < 20) {
       toast.error("Add at least a couple of sentences so the team can get to know you.");
       return;
     }
+
     setSubmitting(true);
     try {
       await applicationService.submit({

@@ -12,6 +12,8 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Toaster } from "@/components/ui/sonner";
+import { supabase } from "@/integrations/supabase/client";
+import { ensureAuthLoaded, resetAuthHydration, useAuthStore } from "@/store/auth.store";
 
 function NotFoundComponent() {
   return (
@@ -94,11 +96,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Ikusasa — Where emerging talent gets to work" },
-      { name: "description", content: "Launchpad Hub is a modern SaaS marketplace connecting students, graduates, and businesses for freelance, internship, and entry-level opportunities." },
-      { property: "og:description", content: "Launchpad Hub is a modern SaaS marketplace connecting students, graduates, and businesses for freelance, internship, and entry-level opportunities." },
-      { name: "twitter:description", content: "Launchpad Hub is a modern SaaS marketplace connecting students, graduates, and businesses for freelance, internship, and entry-level opportunities." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/391f5a21-0028-471e-b078-e44c469aa02c/id-preview-b24cd45f--8a837adc-9d54-4d22-8c45-da2ac3ba4e75.lovable.app-1782209163707.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/391f5a21-0028-471e-b078-e44c469aa02c/id-preview-b24cd45f--8a837adc-9d54-4d22-8c45-da2ac3ba4e75.lovable.app-1782209163707.png" },
+      {
+        name: "twitter:description",
+        content:
+          "The South African marketplace connecting students and graduates with businesses.",
+      },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -132,10 +134,37 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+
+  useEffect(() => {
+    void ensureAuthLoaded();
+    const sub = supabase.auth.onAuthStateChange((event) => {
+      if (
+        event !== "SIGNED_IN" &&
+        event !== "SIGNED_OUT" &&
+        event !== "USER_UPDATED" &&
+        event !== "TOKEN_REFRESHED"
+      ) {
+        return;
+      }
+      if (event === "SIGNED_OUT") {
+        useAuthStore.setState({ user: null });
+        resetAuthHydration();
+        queryClient.clear();
+        router.invalidate();
+        return;
+      }
+      void useAuthStore.getState().refresh();
+      router.invalidate();
+      queryClient.invalidateQueries();
+    });
+    return () => {
+      sub.data.subscription.unsubscribe();
+    };
+  }, [queryClient, router]);
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
       <Toaster />
     </QueryClientProvider>

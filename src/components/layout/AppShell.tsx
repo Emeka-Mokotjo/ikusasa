@@ -164,8 +164,9 @@ export function AppShell({
 
   const handleLogout = async () => {
     await logout();
-    navigate({ to: "/" });
+    navigate({ to: "/auth" });
   };
+
 
   return (
     <div className="min-h-screen bg-canvas">
@@ -243,11 +244,14 @@ export function AppShell({
                         <Settings className="mr-2 h-4 w-4" /> Settings
                       </Link>
                     </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                      <Link to="/admin/dashboard">
-                        <ShieldCheck className="mr-2 h-4 w-4" /> Admin
-                      </Link>
-                    </DropdownMenuItem>
+                    {user?.role === "admin" && (
+                      <DropdownMenuItem asChild>
+                        <Link to="/admin/dashboard">
+                          <ShieldCheck className="mr-2 h-4 w-4" /> Admin
+                        </Link>
+                      </DropdownMenuItem>
+                    )}
+
                     <DropdownMenuSeparator />
                     <DropdownMenuItem onClick={handleLogout} className="text-destructive focus:text-destructive">
                       <LogOut className="mr-2 h-4 w-4" /> Log out

@@ -1,8 +1,11 @@
-import { createFileRoute, Link, redirect } from "@tanstack/react-router";
-import { useAuthStore } from "@/store";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect } from "react";
+import { ArrowRight, Briefcase, GraduationCap, Sparkles } from "lucide-react";
+
 import { Logo } from "@/components/common/Logo";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Briefcase, GraduationCap, Sparkles } from "lucide-react";
+import { ensureAuthLoaded, useAuthStore } from "@/store/auth.store";
+import { dashboardForRole } from "@/lib/role-routing";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -21,26 +24,15 @@ export const Route = createFileRoute("/")({
       },
     ],
   }),
-  beforeLoad: () => {
-    if (typeof window !== "undefined") {
-      const raw = localStorage.getItem("ikusasa-auth");
-      if (raw) {
-        try {
-          const parsed = JSON.parse(raw) as { state?: { user?: { onboardingComplete?: boolean } } };
-          if (parsed.state?.user && parsed.state.user.onboardingComplete === false) {
-            throw redirect({ to: "/register" });
-          }
-        } catch (e) {
-          if (e && typeof e === "object" && "to" in e) throw e;
-        }
-      }
-    }
-  },
   component: Landing,
 });
 
 function Landing() {
   const user = useAuthStore((s) => s.user);
+
+  useEffect(() => {
+    void ensureAuthLoaded();
+  }, []);
 
   return (
     <div className="min-h-screen bg-canvas">
@@ -49,15 +41,17 @@ function Landing() {
         <nav className="flex items-center gap-2">
           {user ? (
             <Button asChild>
-              <Link to="/login">Continue as {user.fullName.split(" ")[0]}</Link>
+              <Link to={dashboardForRole(user.role)}>
+                Go to dashboard <ArrowRight className="ml-1.5 h-4 w-4" />
+              </Link>
             </Button>
           ) : (
             <>
               <Button asChild variant="ghost">
-                <Link to="/login">Log in</Link>
+                <Link to="/auth">Sign in</Link>
               </Button>
               <Button asChild>
-                <Link to="/register">
+                <Link to="/auth">
                   Get started <ArrowRight className="ml-1.5 h-4 w-4" />
                 </Link>
               </Button>
@@ -83,12 +77,12 @@ function Landing() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg">
-                <Link to="/register">
+                <Link to="/auth">
                   Create your profile <ArrowRight className="ml-1.5 h-4 w-4" />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link to="/login">I already have an account</Link>
+                <Link to="/auth">I already have an account</Link>
               </Button>
             </div>
           </div>
@@ -123,7 +117,9 @@ function Landing() {
                 </span>
                 <div>
                   <p className="text-sm font-semibold">For businesses</p>
-                  <p className="text-xs text-background/60">Hire emerging talent without the gatekeeping.</p>
+                  <p className="text-xs text-background/60">
+                    Hire emerging talent without the gatekeeping.
+                  </p>
                 </div>
               </div>
               <ul className="mt-4 space-y-2 text-sm text-background/70">

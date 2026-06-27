@@ -9,76 +9,55 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as WalletRouteImport } from './routes/wallet'
-import { Route as SettingsRouteImport } from './routes/settings'
-import { Route as ReviewsRouteImport } from './routes/reviews'
-import { Route as RegisterRouteImport } from './routes/register'
-import { Route as ProfileRouteImport } from './routes/profile'
-import { Route as NotificationsRouteImport } from './routes/notifications'
-import { Route as LoginRouteImport } from './routes/login'
-import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as OpportunitiesIndexRouteImport } from './routes/opportunities.index'
-import { Route as MessagesIndexRouteImport } from './routes/messages.index'
-import { Route as StudentDashboardRouteImport } from './routes/student.dashboard'
-import { Route as StudentApplicationsRouteImport } from './routes/student.applications'
-import { Route as ProfileUserIdRouteImport } from './routes/profile.$userId'
-import { Route as OpportunitiesOpportunityIdRouteImport } from './routes/opportunities.$opportunityId'
-import { Route as OnboardingStudentRouteImport } from './routes/onboarding.student'
-import { Route as OnboardingGraduateRouteImport } from './routes/onboarding.graduate'
-import { Route as OnboardingBusinessRouteImport } from './routes/onboarding.business'
-import { Route as MessagesConversationIdRouteImport } from './routes/messages.$conversationId'
-import { Route as GraduateDashboardRouteImport } from './routes/graduate.dashboard'
-import { Route as GraduateApplicationsRouteImport } from './routes/graduate.applications'
-import { Route as BusinessDashboardRouteImport } from './routes/business.dashboard'
-import { Route as AdminUsersRouteImport } from './routes/admin.users'
-import { Route as AdminPlacementsRouteImport } from './routes/admin.placements'
-import { Route as AdminPayoutsRouteImport } from './routes/admin.payouts'
-import { Route as AdminDisputesRouteImport } from './routes/admin.disputes'
-import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
-import { Route as AdminBusinessesRouteImport } from './routes/admin.businesses'
-import { Route as BusinessOpportunitiesIndexRouteImport } from './routes/business.opportunities.index'
-import { Route as BusinessOpportunitiesNewRouteImport } from './routes/business.opportunities.new'
-import { Route as BusinessOpportunitiesOpportunityIdApplicantsRouteImport } from './routes/business.opportunities.$opportunityId.applicants'
+import { Route as AuthenticatedWalletRouteImport } from './routes/_authenticated/wallet'
+import { Route as AuthenticatedSettingsRouteImport } from './routes/_authenticated/settings'
+import { Route as AuthenticatedReviewsRouteImport } from './routes/_authenticated/reviews'
+import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
+import { Route as AuthenticatedNotificationsRouteImport } from './routes/_authenticated/notifications'
+import { Route as AuthenticatedStudentRouteRouteImport } from './routes/_authenticated/student/route'
+import { Route as AuthenticatedOnboardingRouteRouteImport } from './routes/_authenticated/onboarding/route'
+import { Route as AuthenticatedGraduateRouteRouteImport } from './routes/_authenticated/graduate/route'
+import { Route as AuthenticatedBusinessRouteRouteImport } from './routes/_authenticated/business/route'
+import { Route as AuthenticatedAdminRouteRouteImport } from './routes/_authenticated/admin/route'
+import { Route as AuthenticatedOpportunitiesIndexRouteImport } from './routes/_authenticated/opportunities.index'
+import { Route as AuthenticatedMessagesIndexRouteImport } from './routes/_authenticated/messages.index'
+import { Route as AuthenticatedStudentDashboardRouteImport } from './routes/_authenticated/student/dashboard'
+import { Route as AuthenticatedStudentApplicationsRouteImport } from './routes/_authenticated/student/applications'
+import { Route as AuthenticatedProfileUserIdRouteImport } from './routes/_authenticated/profile.$userId'
+import { Route as AuthenticatedOpportunitiesOpportunityIdRouteImport } from './routes/_authenticated/opportunities.$opportunityId'
+import { Route as AuthenticatedOnboardingStudentRouteImport } from './routes/_authenticated/onboarding/student'
+import { Route as AuthenticatedOnboardingGraduateRouteImport } from './routes/_authenticated/onboarding/graduate'
+import { Route as AuthenticatedOnboardingBusinessRouteImport } from './routes/_authenticated/onboarding/business'
+import { Route as AuthenticatedMessagesConversationIdRouteImport } from './routes/_authenticated/messages.$conversationId'
+import { Route as AuthenticatedGraduateDashboardRouteImport } from './routes/_authenticated/graduate/dashboard'
+import { Route as AuthenticatedGraduateApplicationsRouteImport } from './routes/_authenticated/graduate/applications'
+import { Route as AuthenticatedBusinessDashboardRouteImport } from './routes/_authenticated/business/dashboard'
+import { Route as AuthenticatedAdminUsersRouteImport } from './routes/_authenticated/admin/users'
+import { Route as AuthenticatedAdminPlacementsRouteImport } from './routes/_authenticated/admin/placements'
+import { Route as AuthenticatedAdminPayoutsRouteImport } from './routes/_authenticated/admin/payouts'
+import { Route as AuthenticatedAdminDisputesRouteImport } from './routes/_authenticated/admin/disputes'
+import { Route as AuthenticatedAdminDashboardRouteImport } from './routes/_authenticated/admin/dashboard'
+import { Route as AuthenticatedAdminBusinessesRouteImport } from './routes/_authenticated/admin/businesses'
+import { Route as AuthenticatedBusinessOpportunitiesIndexRouteImport } from './routes/_authenticated/business/opportunities.index'
+import { Route as AuthenticatedBusinessOpportunitiesNewRouteImport } from './routes/_authenticated/business/opportunities.new'
+import { Route as AuthenticatedBusinessOpportunitiesOpportunityIdApplicantsRouteImport } from './routes/_authenticated/business/opportunities.$opportunityId.applicants'
 
-const WalletRoute = WalletRouteImport.update({
-  id: '/wallet',
-  path: '/wallet',
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SettingsRoute = SettingsRouteImport.update({
-  id: '/settings',
-  path: '/settings',
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ReviewsRoute = ReviewsRouteImport.update({
-  id: '/reviews',
-  path: '/reviews',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RegisterRoute = RegisterRouteImport.update({
-  id: '/register',
-  path: '/register',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProfileRoute = ProfileRouteImport.update({
-  id: '/profile',
-  path: '/profile',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NotificationsRoute = NotificationsRouteImport.update({
-  id: '/notifications',
-  path: '/notifications',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LoginRoute = LoginRouteImport.update({
-  id: '/login',
-  path: '/login',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
-  id: '/forgot-password',
-  path: '/forgot-password',
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -86,230 +65,319 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const OpportunitiesIndexRoute = OpportunitiesIndexRouteImport.update({
-  id: '/opportunities/',
-  path: '/opportunities/',
-  getParentRoute: () => rootRouteImport,
+const AuthenticatedWalletRoute = AuthenticatedWalletRouteImport.update({
+  id: '/wallet',
+  path: '/wallet',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const MessagesIndexRoute = MessagesIndexRouteImport.update({
-  id: '/messages/',
-  path: '/messages/',
-  getParentRoute: () => rootRouteImport,
+const AuthenticatedSettingsRoute = AuthenticatedSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const StudentDashboardRoute = StudentDashboardRouteImport.update({
-  id: '/student/dashboard',
-  path: '/student/dashboard',
-  getParentRoute: () => rootRouteImport,
+const AuthenticatedReviewsRoute = AuthenticatedReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const StudentApplicationsRoute = StudentApplicationsRouteImport.update({
-  id: '/student/applications',
-  path: '/student/applications',
-  getParentRoute: () => rootRouteImport,
+const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const ProfileUserIdRoute = ProfileUserIdRouteImport.update({
-  id: '/$userId',
-  path: '/$userId',
-  getParentRoute: () => ProfileRoute,
+const AuthenticatedNotificationsRoute =
+  AuthenticatedNotificationsRouteImport.update({
+    id: '/notifications',
+    path: '/notifications',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedStudentRouteRoute =
+  AuthenticatedStudentRouteRouteImport.update({
+    id: '/student',
+    path: '/student',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedOnboardingRouteRoute =
+  AuthenticatedOnboardingRouteRouteImport.update({
+    id: '/onboarding',
+    path: '/onboarding',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedGraduateRouteRoute =
+  AuthenticatedGraduateRouteRouteImport.update({
+    id: '/graduate',
+    path: '/graduate',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedBusinessRouteRoute =
+  AuthenticatedBusinessRouteRouteImport.update({
+    id: '/business',
+    path: '/business',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAdminRouteRoute = AuthenticatedAdminRouteRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const OpportunitiesOpportunityIdRoute =
-  OpportunitiesOpportunityIdRouteImport.update({
+const AuthenticatedOpportunitiesIndexRoute =
+  AuthenticatedOpportunitiesIndexRouteImport.update({
+    id: '/opportunities/',
+    path: '/opportunities/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedMessagesIndexRoute =
+  AuthenticatedMessagesIndexRouteImport.update({
+    id: '/messages/',
+    path: '/messages/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedStudentDashboardRoute =
+  AuthenticatedStudentDashboardRouteImport.update({
+    id: '/dashboard',
+    path: '/dashboard',
+    getParentRoute: () => AuthenticatedStudentRouteRoute,
+  } as any)
+const AuthenticatedStudentApplicationsRoute =
+  AuthenticatedStudentApplicationsRouteImport.update({
+    id: '/applications',
+    path: '/applications',
+    getParentRoute: () => AuthenticatedStudentRouteRoute,
+  } as any)
+const AuthenticatedProfileUserIdRoute =
+  AuthenticatedProfileUserIdRouteImport.update({
+    id: '/$userId',
+    path: '/$userId',
+    getParentRoute: () => AuthenticatedProfileRoute,
+  } as any)
+const AuthenticatedOpportunitiesOpportunityIdRoute =
+  AuthenticatedOpportunitiesOpportunityIdRouteImport.update({
     id: '/opportunities/$opportunityId',
     path: '/opportunities/$opportunityId',
-    getParentRoute: () => rootRouteImport,
+    getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
-const OnboardingStudentRoute = OnboardingStudentRouteImport.update({
-  id: '/onboarding/student',
-  path: '/onboarding/student',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const OnboardingGraduateRoute = OnboardingGraduateRouteImport.update({
-  id: '/onboarding/graduate',
-  path: '/onboarding/graduate',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const OnboardingBusinessRoute = OnboardingBusinessRouteImport.update({
-  id: '/onboarding/business',
-  path: '/onboarding/business',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MessagesConversationIdRoute = MessagesConversationIdRouteImport.update({
-  id: '/messages/$conversationId',
-  path: '/messages/$conversationId',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GraduateDashboardRoute = GraduateDashboardRouteImport.update({
-  id: '/graduate/dashboard',
-  path: '/graduate/dashboard',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GraduateApplicationsRoute = GraduateApplicationsRouteImport.update({
-  id: '/graduate/applications',
-  path: '/graduate/applications',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BusinessDashboardRoute = BusinessDashboardRouteImport.update({
-  id: '/business/dashboard',
-  path: '/business/dashboard',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminUsersRoute = AdminUsersRouteImport.update({
-  id: '/admin/users',
-  path: '/admin/users',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminPlacementsRoute = AdminPlacementsRouteImport.update({
-  id: '/admin/placements',
-  path: '/admin/placements',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminPayoutsRoute = AdminPayoutsRouteImport.update({
-  id: '/admin/payouts',
-  path: '/admin/payouts',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminDisputesRoute = AdminDisputesRouteImport.update({
-  id: '/admin/disputes',
-  path: '/admin/disputes',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminDashboardRoute = AdminDashboardRouteImport.update({
-  id: '/admin/dashboard',
-  path: '/admin/dashboard',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminBusinessesRoute = AdminBusinessesRouteImport.update({
-  id: '/admin/businesses',
-  path: '/admin/businesses',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BusinessOpportunitiesIndexRoute =
-  BusinessOpportunitiesIndexRouteImport.update({
-    id: '/business/opportunities/',
-    path: '/business/opportunities/',
-    getParentRoute: () => rootRouteImport,
+const AuthenticatedOnboardingStudentRoute =
+  AuthenticatedOnboardingStudentRouteImport.update({
+    id: '/student',
+    path: '/student',
+    getParentRoute: () => AuthenticatedOnboardingRouteRoute,
   } as any)
-const BusinessOpportunitiesNewRoute =
-  BusinessOpportunitiesNewRouteImport.update({
-    id: '/business/opportunities/new',
-    path: '/business/opportunities/new',
-    getParentRoute: () => rootRouteImport,
+const AuthenticatedOnboardingGraduateRoute =
+  AuthenticatedOnboardingGraduateRouteImport.update({
+    id: '/graduate',
+    path: '/graduate',
+    getParentRoute: () => AuthenticatedOnboardingRouteRoute,
   } as any)
-const BusinessOpportunitiesOpportunityIdApplicantsRoute =
-  BusinessOpportunitiesOpportunityIdApplicantsRouteImport.update({
-    id: '/business/opportunities/$opportunityId/applicants',
-    path: '/business/opportunities/$opportunityId/applicants',
-    getParentRoute: () => rootRouteImport,
+const AuthenticatedOnboardingBusinessRoute =
+  AuthenticatedOnboardingBusinessRouteImport.update({
+    id: '/business',
+    path: '/business',
+    getParentRoute: () => AuthenticatedOnboardingRouteRoute,
+  } as any)
+const AuthenticatedMessagesConversationIdRoute =
+  AuthenticatedMessagesConversationIdRouteImport.update({
+    id: '/messages/$conversationId',
+    path: '/messages/$conversationId',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedGraduateDashboardRoute =
+  AuthenticatedGraduateDashboardRouteImport.update({
+    id: '/dashboard',
+    path: '/dashboard',
+    getParentRoute: () => AuthenticatedGraduateRouteRoute,
+  } as any)
+const AuthenticatedGraduateApplicationsRoute =
+  AuthenticatedGraduateApplicationsRouteImport.update({
+    id: '/applications',
+    path: '/applications',
+    getParentRoute: () => AuthenticatedGraduateRouteRoute,
+  } as any)
+const AuthenticatedBusinessDashboardRoute =
+  AuthenticatedBusinessDashboardRouteImport.update({
+    id: '/dashboard',
+    path: '/dashboard',
+    getParentRoute: () => AuthenticatedBusinessRouteRoute,
+  } as any)
+const AuthenticatedAdminUsersRoute = AuthenticatedAdminUsersRouteImport.update({
+  id: '/users',
+  path: '/users',
+  getParentRoute: () => AuthenticatedAdminRouteRoute,
+} as any)
+const AuthenticatedAdminPlacementsRoute =
+  AuthenticatedAdminPlacementsRouteImport.update({
+    id: '/placements',
+    path: '/placements',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminPayoutsRoute =
+  AuthenticatedAdminPayoutsRouteImport.update({
+    id: '/payouts',
+    path: '/payouts',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminDisputesRoute =
+  AuthenticatedAdminDisputesRouteImport.update({
+    id: '/disputes',
+    path: '/disputes',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminDashboardRoute =
+  AuthenticatedAdminDashboardRouteImport.update({
+    id: '/dashboard',
+    path: '/dashboard',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminBusinessesRoute =
+  AuthenticatedAdminBusinessesRouteImport.update({
+    id: '/businesses',
+    path: '/businesses',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedBusinessOpportunitiesIndexRoute =
+  AuthenticatedBusinessOpportunitiesIndexRouteImport.update({
+    id: '/opportunities/',
+    path: '/opportunities/',
+    getParentRoute: () => AuthenticatedBusinessRouteRoute,
+  } as any)
+const AuthenticatedBusinessOpportunitiesNewRoute =
+  AuthenticatedBusinessOpportunitiesNewRouteImport.update({
+    id: '/opportunities/new',
+    path: '/opportunities/new',
+    getParentRoute: () => AuthenticatedBusinessRouteRoute,
+  } as any)
+const AuthenticatedBusinessOpportunitiesOpportunityIdApplicantsRoute =
+  AuthenticatedBusinessOpportunitiesOpportunityIdApplicantsRouteImport.update({
+    id: '/opportunities/$opportunityId/applicants',
+    path: '/opportunities/$opportunityId/applicants',
+    getParentRoute: () => AuthenticatedBusinessRouteRoute,
   } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/forgot-password': typeof ForgotPasswordRoute
-  '/login': typeof LoginRoute
-  '/notifications': typeof NotificationsRoute
-  '/profile': typeof ProfileRouteWithChildren
-  '/register': typeof RegisterRoute
-  '/reviews': typeof ReviewsRoute
-  '/settings': typeof SettingsRoute
-  '/wallet': typeof WalletRoute
-  '/admin/businesses': typeof AdminBusinessesRoute
-  '/admin/dashboard': typeof AdminDashboardRoute
-  '/admin/disputes': typeof AdminDisputesRoute
-  '/admin/payouts': typeof AdminPayoutsRoute
-  '/admin/placements': typeof AdminPlacementsRoute
-  '/admin/users': typeof AdminUsersRoute
-  '/business/dashboard': typeof BusinessDashboardRoute
-  '/graduate/applications': typeof GraduateApplicationsRoute
-  '/graduate/dashboard': typeof GraduateDashboardRoute
-  '/messages/$conversationId': typeof MessagesConversationIdRoute
-  '/onboarding/business': typeof OnboardingBusinessRoute
-  '/onboarding/graduate': typeof OnboardingGraduateRoute
-  '/onboarding/student': typeof OnboardingStudentRoute
-  '/opportunities/$opportunityId': typeof OpportunitiesOpportunityIdRoute
-  '/profile/$userId': typeof ProfileUserIdRoute
-  '/student/applications': typeof StudentApplicationsRoute
-  '/student/dashboard': typeof StudentDashboardRoute
-  '/messages/': typeof MessagesIndexRoute
-  '/opportunities/': typeof OpportunitiesIndexRoute
-  '/business/opportunities/new': typeof BusinessOpportunitiesNewRoute
-  '/business/opportunities/': typeof BusinessOpportunitiesIndexRoute
-  '/business/opportunities/$opportunityId/applicants': typeof BusinessOpportunitiesOpportunityIdApplicantsRoute
+  '/auth': typeof AuthRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/admin': typeof AuthenticatedAdminRouteRouteWithChildren
+  '/business': typeof AuthenticatedBusinessRouteRouteWithChildren
+  '/graduate': typeof AuthenticatedGraduateRouteRouteWithChildren
+  '/onboarding': typeof AuthenticatedOnboardingRouteRouteWithChildren
+  '/student': typeof AuthenticatedStudentRouteRouteWithChildren
+  '/notifications': typeof AuthenticatedNotificationsRoute
+  '/profile': typeof AuthenticatedProfileRouteWithChildren
+  '/reviews': typeof AuthenticatedReviewsRoute
+  '/settings': typeof AuthenticatedSettingsRoute
+  '/wallet': typeof AuthenticatedWalletRoute
+  '/admin/businesses': typeof AuthenticatedAdminBusinessesRoute
+  '/admin/dashboard': typeof AuthenticatedAdminDashboardRoute
+  '/admin/disputes': typeof AuthenticatedAdminDisputesRoute
+  '/admin/payouts': typeof AuthenticatedAdminPayoutsRoute
+  '/admin/placements': typeof AuthenticatedAdminPlacementsRoute
+  '/admin/users': typeof AuthenticatedAdminUsersRoute
+  '/business/dashboard': typeof AuthenticatedBusinessDashboardRoute
+  '/graduate/applications': typeof AuthenticatedGraduateApplicationsRoute
+  '/graduate/dashboard': typeof AuthenticatedGraduateDashboardRoute
+  '/messages/$conversationId': typeof AuthenticatedMessagesConversationIdRoute
+  '/onboarding/business': typeof AuthenticatedOnboardingBusinessRoute
+  '/onboarding/graduate': typeof AuthenticatedOnboardingGraduateRoute
+  '/onboarding/student': typeof AuthenticatedOnboardingStudentRoute
+  '/opportunities/$opportunityId': typeof AuthenticatedOpportunitiesOpportunityIdRoute
+  '/profile/$userId': typeof AuthenticatedProfileUserIdRoute
+  '/student/applications': typeof AuthenticatedStudentApplicationsRoute
+  '/student/dashboard': typeof AuthenticatedStudentDashboardRoute
+  '/messages/': typeof AuthenticatedMessagesIndexRoute
+  '/opportunities/': typeof AuthenticatedOpportunitiesIndexRoute
+  '/business/opportunities/new': typeof AuthenticatedBusinessOpportunitiesNewRoute
+  '/business/opportunities/': typeof AuthenticatedBusinessOpportunitiesIndexRoute
+  '/business/opportunities/$opportunityId/applicants': typeof AuthenticatedBusinessOpportunitiesOpportunityIdApplicantsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/forgot-password': typeof ForgotPasswordRoute
-  '/login': typeof LoginRoute
-  '/notifications': typeof NotificationsRoute
-  '/profile': typeof ProfileRouteWithChildren
-  '/register': typeof RegisterRoute
-  '/reviews': typeof ReviewsRoute
-  '/settings': typeof SettingsRoute
-  '/wallet': typeof WalletRoute
-  '/admin/businesses': typeof AdminBusinessesRoute
-  '/admin/dashboard': typeof AdminDashboardRoute
-  '/admin/disputes': typeof AdminDisputesRoute
-  '/admin/payouts': typeof AdminPayoutsRoute
-  '/admin/placements': typeof AdminPlacementsRoute
-  '/admin/users': typeof AdminUsersRoute
-  '/business/dashboard': typeof BusinessDashboardRoute
-  '/graduate/applications': typeof GraduateApplicationsRoute
-  '/graduate/dashboard': typeof GraduateDashboardRoute
-  '/messages/$conversationId': typeof MessagesConversationIdRoute
-  '/onboarding/business': typeof OnboardingBusinessRoute
-  '/onboarding/graduate': typeof OnboardingGraduateRoute
-  '/onboarding/student': typeof OnboardingStudentRoute
-  '/opportunities/$opportunityId': typeof OpportunitiesOpportunityIdRoute
-  '/profile/$userId': typeof ProfileUserIdRoute
-  '/student/applications': typeof StudentApplicationsRoute
-  '/student/dashboard': typeof StudentDashboardRoute
-  '/messages': typeof MessagesIndexRoute
-  '/opportunities': typeof OpportunitiesIndexRoute
-  '/business/opportunities/new': typeof BusinessOpportunitiesNewRoute
-  '/business/opportunities': typeof BusinessOpportunitiesIndexRoute
-  '/business/opportunities/$opportunityId/applicants': typeof BusinessOpportunitiesOpportunityIdApplicantsRoute
+  '/auth': typeof AuthRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/admin': typeof AuthenticatedAdminRouteRouteWithChildren
+  '/business': typeof AuthenticatedBusinessRouteRouteWithChildren
+  '/graduate': typeof AuthenticatedGraduateRouteRouteWithChildren
+  '/onboarding': typeof AuthenticatedOnboardingRouteRouteWithChildren
+  '/student': typeof AuthenticatedStudentRouteRouteWithChildren
+  '/notifications': typeof AuthenticatedNotificationsRoute
+  '/profile': typeof AuthenticatedProfileRouteWithChildren
+  '/reviews': typeof AuthenticatedReviewsRoute
+  '/settings': typeof AuthenticatedSettingsRoute
+  '/wallet': typeof AuthenticatedWalletRoute
+  '/admin/businesses': typeof AuthenticatedAdminBusinessesRoute
+  '/admin/dashboard': typeof AuthenticatedAdminDashboardRoute
+  '/admin/disputes': typeof AuthenticatedAdminDisputesRoute
+  '/admin/payouts': typeof AuthenticatedAdminPayoutsRoute
+  '/admin/placements': typeof AuthenticatedAdminPlacementsRoute
+  '/admin/users': typeof AuthenticatedAdminUsersRoute
+  '/business/dashboard': typeof AuthenticatedBusinessDashboardRoute
+  '/graduate/applications': typeof AuthenticatedGraduateApplicationsRoute
+  '/graduate/dashboard': typeof AuthenticatedGraduateDashboardRoute
+  '/messages/$conversationId': typeof AuthenticatedMessagesConversationIdRoute
+  '/onboarding/business': typeof AuthenticatedOnboardingBusinessRoute
+  '/onboarding/graduate': typeof AuthenticatedOnboardingGraduateRoute
+  '/onboarding/student': typeof AuthenticatedOnboardingStudentRoute
+  '/opportunities/$opportunityId': typeof AuthenticatedOpportunitiesOpportunityIdRoute
+  '/profile/$userId': typeof AuthenticatedProfileUserIdRoute
+  '/student/applications': typeof AuthenticatedStudentApplicationsRoute
+  '/student/dashboard': typeof AuthenticatedStudentDashboardRoute
+  '/messages': typeof AuthenticatedMessagesIndexRoute
+  '/opportunities': typeof AuthenticatedOpportunitiesIndexRoute
+  '/business/opportunities/new': typeof AuthenticatedBusinessOpportunitiesNewRoute
+  '/business/opportunities': typeof AuthenticatedBusinessOpportunitiesIndexRoute
+  '/business/opportunities/$opportunityId/applicants': typeof AuthenticatedBusinessOpportunitiesOpportunityIdApplicantsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/forgot-password': typeof ForgotPasswordRoute
-  '/login': typeof LoginRoute
-  '/notifications': typeof NotificationsRoute
-  '/profile': typeof ProfileRouteWithChildren
-  '/register': typeof RegisterRoute
-  '/reviews': typeof ReviewsRoute
-  '/settings': typeof SettingsRoute
-  '/wallet': typeof WalletRoute
-  '/admin/businesses': typeof AdminBusinessesRoute
-  '/admin/dashboard': typeof AdminDashboardRoute
-  '/admin/disputes': typeof AdminDisputesRoute
-  '/admin/payouts': typeof AdminPayoutsRoute
-  '/admin/placements': typeof AdminPlacementsRoute
-  '/admin/users': typeof AdminUsersRoute
-  '/business/dashboard': typeof BusinessDashboardRoute
-  '/graduate/applications': typeof GraduateApplicationsRoute
-  '/graduate/dashboard': typeof GraduateDashboardRoute
-  '/messages/$conversationId': typeof MessagesConversationIdRoute
-  '/onboarding/business': typeof OnboardingBusinessRoute
-  '/onboarding/graduate': typeof OnboardingGraduateRoute
-  '/onboarding/student': typeof OnboardingStudentRoute
-  '/opportunities/$opportunityId': typeof OpportunitiesOpportunityIdRoute
-  '/profile/$userId': typeof ProfileUserIdRoute
-  '/student/applications': typeof StudentApplicationsRoute
-  '/student/dashboard': typeof StudentDashboardRoute
-  '/messages/': typeof MessagesIndexRoute
-  '/opportunities/': typeof OpportunitiesIndexRoute
-  '/business/opportunities/new': typeof BusinessOpportunitiesNewRoute
-  '/business/opportunities/': typeof BusinessOpportunitiesIndexRoute
-  '/business/opportunities/$opportunityId/applicants': typeof BusinessOpportunitiesOpportunityIdApplicantsRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/auth': typeof AuthRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRouteRouteWithChildren
+  '/_authenticated/business': typeof AuthenticatedBusinessRouteRouteWithChildren
+  '/_authenticated/graduate': typeof AuthenticatedGraduateRouteRouteWithChildren
+  '/_authenticated/onboarding': typeof AuthenticatedOnboardingRouteRouteWithChildren
+  '/_authenticated/student': typeof AuthenticatedStudentRouteRouteWithChildren
+  '/_authenticated/notifications': typeof AuthenticatedNotificationsRoute
+  '/_authenticated/profile': typeof AuthenticatedProfileRouteWithChildren
+  '/_authenticated/reviews': typeof AuthenticatedReviewsRoute
+  '/_authenticated/settings': typeof AuthenticatedSettingsRoute
+  '/_authenticated/wallet': typeof AuthenticatedWalletRoute
+  '/_authenticated/admin/businesses': typeof AuthenticatedAdminBusinessesRoute
+  '/_authenticated/admin/dashboard': typeof AuthenticatedAdminDashboardRoute
+  '/_authenticated/admin/disputes': typeof AuthenticatedAdminDisputesRoute
+  '/_authenticated/admin/payouts': typeof AuthenticatedAdminPayoutsRoute
+  '/_authenticated/admin/placements': typeof AuthenticatedAdminPlacementsRoute
+  '/_authenticated/admin/users': typeof AuthenticatedAdminUsersRoute
+  '/_authenticated/business/dashboard': typeof AuthenticatedBusinessDashboardRoute
+  '/_authenticated/graduate/applications': typeof AuthenticatedGraduateApplicationsRoute
+  '/_authenticated/graduate/dashboard': typeof AuthenticatedGraduateDashboardRoute
+  '/_authenticated/messages/$conversationId': typeof AuthenticatedMessagesConversationIdRoute
+  '/_authenticated/onboarding/business': typeof AuthenticatedOnboardingBusinessRoute
+  '/_authenticated/onboarding/graduate': typeof AuthenticatedOnboardingGraduateRoute
+  '/_authenticated/onboarding/student': typeof AuthenticatedOnboardingStudentRoute
+  '/_authenticated/opportunities/$opportunityId': typeof AuthenticatedOpportunitiesOpportunityIdRoute
+  '/_authenticated/profile/$userId': typeof AuthenticatedProfileUserIdRoute
+  '/_authenticated/student/applications': typeof AuthenticatedStudentApplicationsRoute
+  '/_authenticated/student/dashboard': typeof AuthenticatedStudentDashboardRoute
+  '/_authenticated/messages/': typeof AuthenticatedMessagesIndexRoute
+  '/_authenticated/opportunities/': typeof AuthenticatedOpportunitiesIndexRoute
+  '/_authenticated/business/opportunities/new': typeof AuthenticatedBusinessOpportunitiesNewRoute
+  '/_authenticated/business/opportunities/': typeof AuthenticatedBusinessOpportunitiesIndexRoute
+  '/_authenticated/business/opportunities/$opportunityId/applicants': typeof AuthenticatedBusinessOpportunitiesOpportunityIdApplicantsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/forgot-password'
-    | '/login'
+    | '/auth'
+    | '/reset-password'
+    | '/admin'
+    | '/business'
+    | '/graduate'
+    | '/onboarding'
+    | '/student'
     | '/notifications'
     | '/profile'
-    | '/register'
     | '/reviews'
     | '/settings'
     | '/wallet'
@@ -338,11 +406,15 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/forgot-password'
-    | '/login'
+    | '/auth'
+    | '/reset-password'
+    | '/admin'
+    | '/business'
+    | '/graduate'
+    | '/onboarding'
+    | '/student'
     | '/notifications'
     | '/profile'
-    | '/register'
     | '/reviews'
     | '/settings'
     | '/wallet'
@@ -371,127 +443,71 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/forgot-password'
-    | '/login'
-    | '/notifications'
-    | '/profile'
-    | '/register'
-    | '/reviews'
-    | '/settings'
-    | '/wallet'
-    | '/admin/businesses'
-    | '/admin/dashboard'
-    | '/admin/disputes'
-    | '/admin/payouts'
-    | '/admin/placements'
-    | '/admin/users'
-    | '/business/dashboard'
-    | '/graduate/applications'
-    | '/graduate/dashboard'
-    | '/messages/$conversationId'
-    | '/onboarding/business'
-    | '/onboarding/graduate'
-    | '/onboarding/student'
-    | '/opportunities/$opportunityId'
-    | '/profile/$userId'
-    | '/student/applications'
-    | '/student/dashboard'
-    | '/messages/'
-    | '/opportunities/'
-    | '/business/opportunities/new'
-    | '/business/opportunities/'
-    | '/business/opportunities/$opportunityId/applicants'
+    | '/_authenticated'
+    | '/auth'
+    | '/reset-password'
+    | '/_authenticated/admin'
+    | '/_authenticated/business'
+    | '/_authenticated/graduate'
+    | '/_authenticated/onboarding'
+    | '/_authenticated/student'
+    | '/_authenticated/notifications'
+    | '/_authenticated/profile'
+    | '/_authenticated/reviews'
+    | '/_authenticated/settings'
+    | '/_authenticated/wallet'
+    | '/_authenticated/admin/businesses'
+    | '/_authenticated/admin/dashboard'
+    | '/_authenticated/admin/disputes'
+    | '/_authenticated/admin/payouts'
+    | '/_authenticated/admin/placements'
+    | '/_authenticated/admin/users'
+    | '/_authenticated/business/dashboard'
+    | '/_authenticated/graduate/applications'
+    | '/_authenticated/graduate/dashboard'
+    | '/_authenticated/messages/$conversationId'
+    | '/_authenticated/onboarding/business'
+    | '/_authenticated/onboarding/graduate'
+    | '/_authenticated/onboarding/student'
+    | '/_authenticated/opportunities/$opportunityId'
+    | '/_authenticated/profile/$userId'
+    | '/_authenticated/student/applications'
+    | '/_authenticated/student/dashboard'
+    | '/_authenticated/messages/'
+    | '/_authenticated/opportunities/'
+    | '/_authenticated/business/opportunities/new'
+    | '/_authenticated/business/opportunities/'
+    | '/_authenticated/business/opportunities/$opportunityId/applicants'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ForgotPasswordRoute: typeof ForgotPasswordRoute
-  LoginRoute: typeof LoginRoute
-  NotificationsRoute: typeof NotificationsRoute
-  ProfileRoute: typeof ProfileRouteWithChildren
-  RegisterRoute: typeof RegisterRoute
-  ReviewsRoute: typeof ReviewsRoute
-  SettingsRoute: typeof SettingsRoute
-  WalletRoute: typeof WalletRoute
-  AdminBusinessesRoute: typeof AdminBusinessesRoute
-  AdminDashboardRoute: typeof AdminDashboardRoute
-  AdminDisputesRoute: typeof AdminDisputesRoute
-  AdminPayoutsRoute: typeof AdminPayoutsRoute
-  AdminPlacementsRoute: typeof AdminPlacementsRoute
-  AdminUsersRoute: typeof AdminUsersRoute
-  BusinessDashboardRoute: typeof BusinessDashboardRoute
-  GraduateApplicationsRoute: typeof GraduateApplicationsRoute
-  GraduateDashboardRoute: typeof GraduateDashboardRoute
-  MessagesConversationIdRoute: typeof MessagesConversationIdRoute
-  OnboardingBusinessRoute: typeof OnboardingBusinessRoute
-  OnboardingGraduateRoute: typeof OnboardingGraduateRoute
-  OnboardingStudentRoute: typeof OnboardingStudentRoute
-  OpportunitiesOpportunityIdRoute: typeof OpportunitiesOpportunityIdRoute
-  StudentApplicationsRoute: typeof StudentApplicationsRoute
-  StudentDashboardRoute: typeof StudentDashboardRoute
-  MessagesIndexRoute: typeof MessagesIndexRoute
-  OpportunitiesIndexRoute: typeof OpportunitiesIndexRoute
-  BusinessOpportunitiesNewRoute: typeof BusinessOpportunitiesNewRoute
-  BusinessOpportunitiesIndexRoute: typeof BusinessOpportunitiesIndexRoute
-  BusinessOpportunitiesOpportunityIdApplicantsRoute: typeof BusinessOpportunitiesOpportunityIdApplicantsRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AuthRoute: typeof AuthRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/wallet': {
-      id: '/wallet'
-      path: '/wallet'
-      fullPath: '/wallet'
-      preLoaderRoute: typeof WalletRouteImport
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/settings': {
-      id: '/settings'
-      path: '/settings'
-      fullPath: '/settings'
-      preLoaderRoute: typeof SettingsRouteImport
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/reviews': {
-      id: '/reviews'
-      path: '/reviews'
-      fullPath: '/reviews'
-      preLoaderRoute: typeof ReviewsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/register': {
-      id: '/register'
-      path: '/register'
-      fullPath: '/register'
-      preLoaderRoute: typeof RegisterRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/profile': {
-      id: '/profile'
-      path: '/profile'
-      fullPath: '/profile'
-      preLoaderRoute: typeof ProfileRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/notifications': {
-      id: '/notifications'
-      path: '/notifications'
-      fullPath: '/notifications'
-      preLoaderRoute: typeof NotificationsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/login': {
-      id: '/login'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof LoginRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/forgot-password': {
-      id: '/forgot-password'
-      path: '/forgot-password'
-      fullPath: '/forgot-password'
-      preLoaderRoute: typeof ForgotPasswordRouteImport
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -501,206 +517,388 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/opportunities/': {
-      id: '/opportunities/'
+    '/_authenticated/wallet': {
+      id: '/_authenticated/wallet'
+      path: '/wallet'
+      fullPath: '/wallet'
+      preLoaderRoute: typeof AuthenticatedWalletRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/settings': {
+      id: '/_authenticated/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof AuthenticatedSettingsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/reviews': {
+      id: '/_authenticated/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof AuthenticatedReviewsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/profile': {
+      id: '/_authenticated/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof AuthenticatedProfileRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/notifications': {
+      id: '/_authenticated/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof AuthenticatedNotificationsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/student': {
+      id: '/_authenticated/student'
+      path: '/student'
+      fullPath: '/student'
+      preLoaderRoute: typeof AuthenticatedStudentRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/onboarding': {
+      id: '/_authenticated/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof AuthenticatedOnboardingRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/graduate': {
+      id: '/_authenticated/graduate'
+      path: '/graduate'
+      fullPath: '/graduate'
+      preLoaderRoute: typeof AuthenticatedGraduateRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/business': {
+      id: '/_authenticated/business'
+      path: '/business'
+      fullPath: '/business'
+      preLoaderRoute: typeof AuthenticatedBusinessRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/opportunities/': {
+      id: '/_authenticated/opportunities/'
       path: '/opportunities'
       fullPath: '/opportunities/'
-      preLoaderRoute: typeof OpportunitiesIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedOpportunitiesIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/messages/': {
-      id: '/messages/'
+    '/_authenticated/messages/': {
+      id: '/_authenticated/messages/'
       path: '/messages'
       fullPath: '/messages/'
-      preLoaderRoute: typeof MessagesIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedMessagesIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/student/dashboard': {
-      id: '/student/dashboard'
-      path: '/student/dashboard'
+    '/_authenticated/student/dashboard': {
+      id: '/_authenticated/student/dashboard'
+      path: '/dashboard'
       fullPath: '/student/dashboard'
-      preLoaderRoute: typeof StudentDashboardRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedStudentDashboardRouteImport
+      parentRoute: typeof AuthenticatedStudentRouteRoute
     }
-    '/student/applications': {
-      id: '/student/applications'
-      path: '/student/applications'
+    '/_authenticated/student/applications': {
+      id: '/_authenticated/student/applications'
+      path: '/applications'
       fullPath: '/student/applications'
-      preLoaderRoute: typeof StudentApplicationsRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedStudentApplicationsRouteImport
+      parentRoute: typeof AuthenticatedStudentRouteRoute
     }
-    '/profile/$userId': {
-      id: '/profile/$userId'
+    '/_authenticated/profile/$userId': {
+      id: '/_authenticated/profile/$userId'
       path: '/$userId'
       fullPath: '/profile/$userId'
-      preLoaderRoute: typeof ProfileUserIdRouteImport
-      parentRoute: typeof ProfileRoute
+      preLoaderRoute: typeof AuthenticatedProfileUserIdRouteImport
+      parentRoute: typeof AuthenticatedProfileRoute
     }
-    '/opportunities/$opportunityId': {
-      id: '/opportunities/$opportunityId'
+    '/_authenticated/opportunities/$opportunityId': {
+      id: '/_authenticated/opportunities/$opportunityId'
       path: '/opportunities/$opportunityId'
       fullPath: '/opportunities/$opportunityId'
-      preLoaderRoute: typeof OpportunitiesOpportunityIdRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedOpportunitiesOpportunityIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/onboarding/student': {
-      id: '/onboarding/student'
-      path: '/onboarding/student'
+    '/_authenticated/onboarding/student': {
+      id: '/_authenticated/onboarding/student'
+      path: '/student'
       fullPath: '/onboarding/student'
-      preLoaderRoute: typeof OnboardingStudentRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedOnboardingStudentRouteImport
+      parentRoute: typeof AuthenticatedOnboardingRouteRoute
     }
-    '/onboarding/graduate': {
-      id: '/onboarding/graduate'
-      path: '/onboarding/graduate'
+    '/_authenticated/onboarding/graduate': {
+      id: '/_authenticated/onboarding/graduate'
+      path: '/graduate'
       fullPath: '/onboarding/graduate'
-      preLoaderRoute: typeof OnboardingGraduateRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedOnboardingGraduateRouteImport
+      parentRoute: typeof AuthenticatedOnboardingRouteRoute
     }
-    '/onboarding/business': {
-      id: '/onboarding/business'
-      path: '/onboarding/business'
+    '/_authenticated/onboarding/business': {
+      id: '/_authenticated/onboarding/business'
+      path: '/business'
       fullPath: '/onboarding/business'
-      preLoaderRoute: typeof OnboardingBusinessRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedOnboardingBusinessRouteImport
+      parentRoute: typeof AuthenticatedOnboardingRouteRoute
     }
-    '/messages/$conversationId': {
-      id: '/messages/$conversationId'
+    '/_authenticated/messages/$conversationId': {
+      id: '/_authenticated/messages/$conversationId'
       path: '/messages/$conversationId'
       fullPath: '/messages/$conversationId'
-      preLoaderRoute: typeof MessagesConversationIdRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedMessagesConversationIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/graduate/dashboard': {
-      id: '/graduate/dashboard'
-      path: '/graduate/dashboard'
+    '/_authenticated/graduate/dashboard': {
+      id: '/_authenticated/graduate/dashboard'
+      path: '/dashboard'
       fullPath: '/graduate/dashboard'
-      preLoaderRoute: typeof GraduateDashboardRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedGraduateDashboardRouteImport
+      parentRoute: typeof AuthenticatedGraduateRouteRoute
     }
-    '/graduate/applications': {
-      id: '/graduate/applications'
-      path: '/graduate/applications'
+    '/_authenticated/graduate/applications': {
+      id: '/_authenticated/graduate/applications'
+      path: '/applications'
       fullPath: '/graduate/applications'
-      preLoaderRoute: typeof GraduateApplicationsRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedGraduateApplicationsRouteImport
+      parentRoute: typeof AuthenticatedGraduateRouteRoute
     }
-    '/business/dashboard': {
-      id: '/business/dashboard'
-      path: '/business/dashboard'
+    '/_authenticated/business/dashboard': {
+      id: '/_authenticated/business/dashboard'
+      path: '/dashboard'
       fullPath: '/business/dashboard'
-      preLoaderRoute: typeof BusinessDashboardRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedBusinessDashboardRouteImport
+      parentRoute: typeof AuthenticatedBusinessRouteRoute
     }
-    '/admin/users': {
-      id: '/admin/users'
-      path: '/admin/users'
+    '/_authenticated/admin/users': {
+      id: '/_authenticated/admin/users'
+      path: '/users'
       fullPath: '/admin/users'
-      preLoaderRoute: typeof AdminUsersRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedAdminUsersRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
     }
-    '/admin/placements': {
-      id: '/admin/placements'
-      path: '/admin/placements'
+    '/_authenticated/admin/placements': {
+      id: '/_authenticated/admin/placements'
+      path: '/placements'
       fullPath: '/admin/placements'
-      preLoaderRoute: typeof AdminPlacementsRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedAdminPlacementsRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
     }
-    '/admin/payouts': {
-      id: '/admin/payouts'
-      path: '/admin/payouts'
+    '/_authenticated/admin/payouts': {
+      id: '/_authenticated/admin/payouts'
+      path: '/payouts'
       fullPath: '/admin/payouts'
-      preLoaderRoute: typeof AdminPayoutsRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedAdminPayoutsRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
     }
-    '/admin/disputes': {
-      id: '/admin/disputes'
-      path: '/admin/disputes'
+    '/_authenticated/admin/disputes': {
+      id: '/_authenticated/admin/disputes'
+      path: '/disputes'
       fullPath: '/admin/disputes'
-      preLoaderRoute: typeof AdminDisputesRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedAdminDisputesRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
     }
-    '/admin/dashboard': {
-      id: '/admin/dashboard'
-      path: '/admin/dashboard'
+    '/_authenticated/admin/dashboard': {
+      id: '/_authenticated/admin/dashboard'
+      path: '/dashboard'
       fullPath: '/admin/dashboard'
-      preLoaderRoute: typeof AdminDashboardRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedAdminDashboardRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
     }
-    '/admin/businesses': {
-      id: '/admin/businesses'
-      path: '/admin/businesses'
+    '/_authenticated/admin/businesses': {
+      id: '/_authenticated/admin/businesses'
+      path: '/businesses'
       fullPath: '/admin/businesses'
-      preLoaderRoute: typeof AdminBusinessesRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedAdminBusinessesRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
     }
-    '/business/opportunities/': {
-      id: '/business/opportunities/'
-      path: '/business/opportunities'
+    '/_authenticated/business/opportunities/': {
+      id: '/_authenticated/business/opportunities/'
+      path: '/opportunities'
       fullPath: '/business/opportunities/'
-      preLoaderRoute: typeof BusinessOpportunitiesIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedBusinessOpportunitiesIndexRouteImport
+      parentRoute: typeof AuthenticatedBusinessRouteRoute
     }
-    '/business/opportunities/new': {
-      id: '/business/opportunities/new'
-      path: '/business/opportunities/new'
+    '/_authenticated/business/opportunities/new': {
+      id: '/_authenticated/business/opportunities/new'
+      path: '/opportunities/new'
       fullPath: '/business/opportunities/new'
-      preLoaderRoute: typeof BusinessOpportunitiesNewRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedBusinessOpportunitiesNewRouteImport
+      parentRoute: typeof AuthenticatedBusinessRouteRoute
     }
-    '/business/opportunities/$opportunityId/applicants': {
-      id: '/business/opportunities/$opportunityId/applicants'
-      path: '/business/opportunities/$opportunityId/applicants'
+    '/_authenticated/business/opportunities/$opportunityId/applicants': {
+      id: '/_authenticated/business/opportunities/$opportunityId/applicants'
+      path: '/opportunities/$opportunityId/applicants'
       fullPath: '/business/opportunities/$opportunityId/applicants'
-      preLoaderRoute: typeof BusinessOpportunitiesOpportunityIdApplicantsRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedBusinessOpportunitiesOpportunityIdApplicantsRouteImport
+      parentRoute: typeof AuthenticatedBusinessRouteRoute
     }
   }
 }
 
-interface ProfileRouteChildren {
-  ProfileUserIdRoute: typeof ProfileUserIdRoute
+interface AuthenticatedAdminRouteRouteChildren {
+  AuthenticatedAdminBusinessesRoute: typeof AuthenticatedAdminBusinessesRoute
+  AuthenticatedAdminDashboardRoute: typeof AuthenticatedAdminDashboardRoute
+  AuthenticatedAdminDisputesRoute: typeof AuthenticatedAdminDisputesRoute
+  AuthenticatedAdminPayoutsRoute: typeof AuthenticatedAdminPayoutsRoute
+  AuthenticatedAdminPlacementsRoute: typeof AuthenticatedAdminPlacementsRoute
+  AuthenticatedAdminUsersRoute: typeof AuthenticatedAdminUsersRoute
 }
 
-const ProfileRouteChildren: ProfileRouteChildren = {
-  ProfileUserIdRoute: ProfileUserIdRoute,
+const AuthenticatedAdminRouteRouteChildren: AuthenticatedAdminRouteRouteChildren =
+  {
+    AuthenticatedAdminBusinessesRoute: AuthenticatedAdminBusinessesRoute,
+    AuthenticatedAdminDashboardRoute: AuthenticatedAdminDashboardRoute,
+    AuthenticatedAdminDisputesRoute: AuthenticatedAdminDisputesRoute,
+    AuthenticatedAdminPayoutsRoute: AuthenticatedAdminPayoutsRoute,
+    AuthenticatedAdminPlacementsRoute: AuthenticatedAdminPlacementsRoute,
+    AuthenticatedAdminUsersRoute: AuthenticatedAdminUsersRoute,
+  }
+
+const AuthenticatedAdminRouteRouteWithChildren =
+  AuthenticatedAdminRouteRoute._addFileChildren(
+    AuthenticatedAdminRouteRouteChildren,
+  )
+
+interface AuthenticatedBusinessRouteRouteChildren {
+  AuthenticatedBusinessDashboardRoute: typeof AuthenticatedBusinessDashboardRoute
+  AuthenticatedBusinessOpportunitiesNewRoute: typeof AuthenticatedBusinessOpportunitiesNewRoute
+  AuthenticatedBusinessOpportunitiesIndexRoute: typeof AuthenticatedBusinessOpportunitiesIndexRoute
+  AuthenticatedBusinessOpportunitiesOpportunityIdApplicantsRoute: typeof AuthenticatedBusinessOpportunitiesOpportunityIdApplicantsRoute
 }
 
-const ProfileRouteWithChildren =
-  ProfileRoute._addFileChildren(ProfileRouteChildren)
+const AuthenticatedBusinessRouteRouteChildren: AuthenticatedBusinessRouteRouteChildren =
+  {
+    AuthenticatedBusinessDashboardRoute: AuthenticatedBusinessDashboardRoute,
+    AuthenticatedBusinessOpportunitiesNewRoute:
+      AuthenticatedBusinessOpportunitiesNewRoute,
+    AuthenticatedBusinessOpportunitiesIndexRoute:
+      AuthenticatedBusinessOpportunitiesIndexRoute,
+    AuthenticatedBusinessOpportunitiesOpportunityIdApplicantsRoute:
+      AuthenticatedBusinessOpportunitiesOpportunityIdApplicantsRoute,
+  }
+
+const AuthenticatedBusinessRouteRouteWithChildren =
+  AuthenticatedBusinessRouteRoute._addFileChildren(
+    AuthenticatedBusinessRouteRouteChildren,
+  )
+
+interface AuthenticatedGraduateRouteRouteChildren {
+  AuthenticatedGraduateApplicationsRoute: typeof AuthenticatedGraduateApplicationsRoute
+  AuthenticatedGraduateDashboardRoute: typeof AuthenticatedGraduateDashboardRoute
+}
+
+const AuthenticatedGraduateRouteRouteChildren: AuthenticatedGraduateRouteRouteChildren =
+  {
+    AuthenticatedGraduateApplicationsRoute:
+      AuthenticatedGraduateApplicationsRoute,
+    AuthenticatedGraduateDashboardRoute: AuthenticatedGraduateDashboardRoute,
+  }
+
+const AuthenticatedGraduateRouteRouteWithChildren =
+  AuthenticatedGraduateRouteRoute._addFileChildren(
+    AuthenticatedGraduateRouteRouteChildren,
+  )
+
+interface AuthenticatedOnboardingRouteRouteChildren {
+  AuthenticatedOnboardingBusinessRoute: typeof AuthenticatedOnboardingBusinessRoute
+  AuthenticatedOnboardingGraduateRoute: typeof AuthenticatedOnboardingGraduateRoute
+  AuthenticatedOnboardingStudentRoute: typeof AuthenticatedOnboardingStudentRoute
+}
+
+const AuthenticatedOnboardingRouteRouteChildren: AuthenticatedOnboardingRouteRouteChildren =
+  {
+    AuthenticatedOnboardingBusinessRoute: AuthenticatedOnboardingBusinessRoute,
+    AuthenticatedOnboardingGraduateRoute: AuthenticatedOnboardingGraduateRoute,
+    AuthenticatedOnboardingStudentRoute: AuthenticatedOnboardingStudentRoute,
+  }
+
+const AuthenticatedOnboardingRouteRouteWithChildren =
+  AuthenticatedOnboardingRouteRoute._addFileChildren(
+    AuthenticatedOnboardingRouteRouteChildren,
+  )
+
+interface AuthenticatedStudentRouteRouteChildren {
+  AuthenticatedStudentApplicationsRoute: typeof AuthenticatedStudentApplicationsRoute
+  AuthenticatedStudentDashboardRoute: typeof AuthenticatedStudentDashboardRoute
+}
+
+const AuthenticatedStudentRouteRouteChildren: AuthenticatedStudentRouteRouteChildren =
+  {
+    AuthenticatedStudentApplicationsRoute:
+      AuthenticatedStudentApplicationsRoute,
+    AuthenticatedStudentDashboardRoute: AuthenticatedStudentDashboardRoute,
+  }
+
+const AuthenticatedStudentRouteRouteWithChildren =
+  AuthenticatedStudentRouteRoute._addFileChildren(
+    AuthenticatedStudentRouteRouteChildren,
+  )
+
+interface AuthenticatedProfileRouteChildren {
+  AuthenticatedProfileUserIdRoute: typeof AuthenticatedProfileUserIdRoute
+}
+
+const AuthenticatedProfileRouteChildren: AuthenticatedProfileRouteChildren = {
+  AuthenticatedProfileUserIdRoute: AuthenticatedProfileUserIdRoute,
+}
+
+const AuthenticatedProfileRouteWithChildren =
+  AuthenticatedProfileRoute._addFileChildren(AuthenticatedProfileRouteChildren)
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminRouteRoute: typeof AuthenticatedAdminRouteRouteWithChildren
+  AuthenticatedBusinessRouteRoute: typeof AuthenticatedBusinessRouteRouteWithChildren
+  AuthenticatedGraduateRouteRoute: typeof AuthenticatedGraduateRouteRouteWithChildren
+  AuthenticatedOnboardingRouteRoute: typeof AuthenticatedOnboardingRouteRouteWithChildren
+  AuthenticatedStudentRouteRoute: typeof AuthenticatedStudentRouteRouteWithChildren
+  AuthenticatedNotificationsRoute: typeof AuthenticatedNotificationsRoute
+  AuthenticatedProfileRoute: typeof AuthenticatedProfileRouteWithChildren
+  AuthenticatedReviewsRoute: typeof AuthenticatedReviewsRoute
+  AuthenticatedSettingsRoute: typeof AuthenticatedSettingsRoute
+  AuthenticatedWalletRoute: typeof AuthenticatedWalletRoute
+  AuthenticatedMessagesConversationIdRoute: typeof AuthenticatedMessagesConversationIdRoute
+  AuthenticatedOpportunitiesOpportunityIdRoute: typeof AuthenticatedOpportunitiesOpportunityIdRoute
+  AuthenticatedMessagesIndexRoute: typeof AuthenticatedMessagesIndexRoute
+  AuthenticatedOpportunitiesIndexRoute: typeof AuthenticatedOpportunitiesIndexRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminRouteRoute: AuthenticatedAdminRouteRouteWithChildren,
+  AuthenticatedBusinessRouteRoute: AuthenticatedBusinessRouteRouteWithChildren,
+  AuthenticatedGraduateRouteRoute: AuthenticatedGraduateRouteRouteWithChildren,
+  AuthenticatedOnboardingRouteRoute:
+    AuthenticatedOnboardingRouteRouteWithChildren,
+  AuthenticatedStudentRouteRoute: AuthenticatedStudentRouteRouteWithChildren,
+  AuthenticatedNotificationsRoute: AuthenticatedNotificationsRoute,
+  AuthenticatedProfileRoute: AuthenticatedProfileRouteWithChildren,
+  AuthenticatedReviewsRoute: AuthenticatedReviewsRoute,
+  AuthenticatedSettingsRoute: AuthenticatedSettingsRoute,
+  AuthenticatedWalletRoute: AuthenticatedWalletRoute,
+  AuthenticatedMessagesConversationIdRoute:
+    AuthenticatedMessagesConversationIdRoute,
+  AuthenticatedOpportunitiesOpportunityIdRoute:
+    AuthenticatedOpportunitiesOpportunityIdRoute,
+  AuthenticatedMessagesIndexRoute: AuthenticatedMessagesIndexRoute,
+  AuthenticatedOpportunitiesIndexRoute: AuthenticatedOpportunitiesIndexRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ForgotPasswordRoute: ForgotPasswordRoute,
-  LoginRoute: LoginRoute,
-  NotificationsRoute: NotificationsRoute,
-  ProfileRoute: ProfileRouteWithChildren,
-  RegisterRoute: RegisterRoute,
-  ReviewsRoute: ReviewsRoute,
-  SettingsRoute: SettingsRoute,
-  WalletRoute: WalletRoute,
-  AdminBusinessesRoute: AdminBusinessesRoute,
-  AdminDashboardRoute: AdminDashboardRoute,
-  AdminDisputesRoute: AdminDisputesRoute,
-  AdminPayoutsRoute: AdminPayoutsRoute,
-  AdminPlacementsRoute: AdminPlacementsRoute,
-  AdminUsersRoute: AdminUsersRoute,
-  BusinessDashboardRoute: BusinessDashboardRoute,
-  GraduateApplicationsRoute: GraduateApplicationsRoute,
-  GraduateDashboardRoute: GraduateDashboardRoute,
-  MessagesConversationIdRoute: MessagesConversationIdRoute,
-  OnboardingBusinessRoute: OnboardingBusinessRoute,
-  OnboardingGraduateRoute: OnboardingGraduateRoute,
-  OnboardingStudentRoute: OnboardingStudentRoute,
-  OpportunitiesOpportunityIdRoute: OpportunitiesOpportunityIdRoute,
-  StudentApplicationsRoute: StudentApplicationsRoute,
-  StudentDashboardRoute: StudentDashboardRoute,
-  MessagesIndexRoute: MessagesIndexRoute,
-  OpportunitiesIndexRoute: OpportunitiesIndexRoute,
-  BusinessOpportunitiesNewRoute: BusinessOpportunitiesNewRoute,
-  BusinessOpportunitiesIndexRoute: BusinessOpportunitiesIndexRoute,
-  BusinessOpportunitiesOpportunityIdApplicantsRoute:
-    BusinessOpportunitiesOpportunityIdApplicantsRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AuthRoute: AuthRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
